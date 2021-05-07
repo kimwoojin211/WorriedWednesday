@@ -25,13 +25,29 @@ namespace WorriedWednesday.ViewModel
     public ICommand LoginCommand { get; set; }
     public ICommand RegisterCommand { get; set; }
 
-    void Register(object parameter)
+    async void Register(object parameter)
     {
-
+      if (ConfirmPassword != Password)
+      {
+        await App.Current.MainPage.DisplayAlert("Error", "Passwords do not match", "Ok");
+      }
+      else
+      {
+        var user = auth.RegisterWithEmailAndPassword(email, password);
+        if (user != null)
+        {
+          await Application.Current.MainPage.Navigation.PopAsync();
+        }
+      }
     }
 
-    void Login(object parameter)
+    async void Login(object parameter)
     {
+      string token = await auth.LoginWithEmailAndPassword(email, password);
+      if (token != string.Empty)
+      {
+        await Application.Current.MainPage.Navigation.PopAsync();
+      }
     }
     void OnPropertyChanged(string propertyName)
     {
