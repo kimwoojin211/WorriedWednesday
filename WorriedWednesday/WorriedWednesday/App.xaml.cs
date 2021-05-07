@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WorriedWednesday.Views;
 
 namespace WorriedWednesday
 {
@@ -10,7 +11,7 @@ namespace WorriedWednesday
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new HomePage());
         }
 
         protected override void OnStart()
