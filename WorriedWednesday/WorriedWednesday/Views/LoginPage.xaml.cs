@@ -9,12 +9,23 @@ using Xamarin.Forms.Xaml;
 
 namespace WorriedWednesday.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+  [XamlCompilation(XamlCompilationOptions.Compile)]
+  public partial class LoginPage : ContentPage
+  {
+    public LoginPage()
     {
-        public LoginPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
+    void RegisterLabel_Tapped(object sender, EventArgs args)
+    {
+      registerStackLayout.IsVisible = true;
+      loginStackLayout.IsVisible = false;
+    }
+
+    void LoginLabel_Tapped(object sender, EventArgs args)
+    {
+      registerStackLayout.IsVisible = false;
+      loginStackLayout.IsVisible = true;
+    }
+  }
 }
