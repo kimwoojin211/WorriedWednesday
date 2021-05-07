@@ -2,10 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WorriedWednesday.Views.LoginPage">
-    
-    <ContentPage.Content>
-        <Grid Margin="16,0">
-            <StackLayout x:Name="loginStackLayout"
+
+  <Grid Margin="16,0">
+    <!--<StackLayout x:Name="loginStackLayout"
              VerticalOptions="Center"
              IsVisible="True">
                 <Entry Placeholder="Email"
@@ -20,7 +19,27 @@
                     <Label Text="Register">
                     </Label>
                 </StackLayout>
-            </StackLayout>
-        </Grid>
-    </ContentPage.Content>
+            </StackLayout>-->
+    <StackLayout x:Name="registerStackLayout"
+             VerticalOptions="Center"
+             IsVisible="True">
+      <Entry Placeholder="Name"
+           Text=""/>
+      <Entry Placeholder="Email"
+           Keyboard="Email"
+           Text=""/>
+      <Entry Placeholder="Password"
+           IsPassword="True"
+           Text=""/>
+      <Entry Placeholder="Confirm password"
+           IsPassword="True"
+            Text=""/>
+      <Button Text="Register"/>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Already have an account?"/>
+        <Label Text="Login">
+        </Label>
+      </StackLayout>
+    </StackLayout>
+  </Grid>
 </ContentPage>
