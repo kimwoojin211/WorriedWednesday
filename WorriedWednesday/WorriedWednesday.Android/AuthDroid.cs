@@ -12,23 +12,64 @@ namespace WorriedWednesday.Droid
   {
     public bool IsSignIn()
     {
-      return true;
+      var user = FirebaseAuth.Instance.CurrentUser;
+      return user != null;
     }
     public bool SignOut()
     {
-      return true;
+      try
+      {
+        FirebaseAuth.Instance.SignOut();
+        return true;
+      }
+      catch (Exception e)
+      {
+        return false;
+      }
     }
 
-    public Task<string> LoginWithEmailAndPassword(string email, string password)
+    public async Task<string> LoginWithEmailAndPassword(string email, string password)
     {
-      return null;
+      try
+      {
+        var user = await FirebaseAuth.Instance.
+                    SignInWithEmailAndPasswordAsync(email, password);
+        var token = await user.User.GetIdToken(false).AsAsync<GetTokenResult>();
+
+        return token.Token;
+      }
+      catch (FirebaseAuthInvalidUserException e)
+      {
+        e.PrintStackTrace();
+        return string.Empty;
+      }
+      catch (FirebaseAuthInvalidCredentialsException e)
+      {
+        e.PrintStackTrace();
+        return string.Empty;
+      }
     }
 
 
-    public Task<string> RegisterWithEmailAndPassword(string email, string password)
+    public async Task<string> RegisterWithEmailAndPassword(string email, string password)
     {
-      return null;
-
+      try
+      {
+        var user = await FirebaseAuth.Instance.
+                    CreateUserWithEmailAndPasswordAsync(email, password);
+        var token = await user.User.GetIdToken(false).AsAsync<GetTokenResult>();
+        return token.Token;
+      }
+      catch (FirebaseAuthInvalidUserException e)
+      {
+        e.PrintStackTrace();
+        return string.Empty;
+      }
+      catch (FirebaseAuthInvalidCredentialsException e)
+      {
+        e.PrintStackTrace();
+        return string.Empty;
+      }
     }
   }
 }
