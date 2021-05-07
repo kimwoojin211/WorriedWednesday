@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "155106876423",
+    "project_id": "worriedwednesday",
+    "storage_bucket": "worriedwednesday.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155106876423:android:c3cec2bffe9e01bddfdea2",
+        "android_client_info": {
+          "package_name": "com.companyname.worriedwednesday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155106876423-8iue07e33pvll6hultvk3gejihmgoi90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_3thS5NKtH98WWDz6ZCuPWMP_rmGmz5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155106876423-8iue07e33pvll6hultvk3gejihmgoi90.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
