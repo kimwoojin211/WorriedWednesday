@@ -11,6 +11,7 @@ namespace WorriedWednesday.ViewModel
 {
   public class LoginViewModel : INotifyPropertyChanged
   {
+    IAuth auth;
     string name, email, password;
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -19,6 +20,7 @@ namespace WorriedWednesday.ViewModel
     {
       LoginCommand = new Command(Login);
       RegisterCommand = new Command(Register);
+      auth = DependencyService.Get<IAuth>();
     }
     public ICommand LoginCommand { get; set; }
     public ICommand RegisterCommand { get; set; }
