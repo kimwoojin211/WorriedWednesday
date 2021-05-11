@@ -23,19 +23,14 @@ namespace WorriedWednesday.Views
       base.OnAppearing();
       if (!auth.IsSignIn())
       {
-        Console.WriteLine("BOOOOOOOOOOOOOOOO");
         await Task.Delay(300);
         await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
       }
-      else
-      {
-        Console.WriteLine("YAYYYYYYYYYYYYY");
-      }
     }
-    async void OnSignOutButtonClicked(object sender, EventArgs e)
-    {
-      auth.SignOut();
-      await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-    }
+    //async void OnSignOutButtonClicked(object sender, EventArgs e)
+    //{
+    //  auth.SignOut();
+    //  await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+    //}
   }
 }

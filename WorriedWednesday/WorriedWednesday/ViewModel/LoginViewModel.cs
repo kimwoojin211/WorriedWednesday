@@ -36,9 +36,10 @@ namespace WorriedWednesday.ViewModel
         var user = auth.RegisterWithEmailAndPassword(email, password);
         if (user != null)
         {
-          name = "";
-          email = "";
-          password = "";
+          Name = string.Empty;
+          Email = string.Empty;
+          Password = string.Empty;
+          ConfirmPassword = string.Empty;
           await Shell.Current.GoToAsync($"//{nameof(ReadOthersPage)}");
         }
       }
@@ -49,9 +50,9 @@ namespace WorriedWednesday.ViewModel
       string token = await auth.LoginWithEmailAndPassword(email, password);
       if (token != string.Empty)
       {
-        name = "";
-        email = "";
-        password = "";
+
+        Email = string.Empty;
+        Password = string.Empty;
         await Shell.Current.GoToAsync($"//{nameof(ReadOthersPage)}");
       }
     }

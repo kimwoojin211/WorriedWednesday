@@ -22,7 +22,7 @@ namespace WorriedWednesday.Views
     async void OnSignOutButtonClicked(object sender, EventArgs e)
     {
       auth.SignOut();
-      await Navigation.PushAsync(new LoginPage());
+      await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }
   }
 }

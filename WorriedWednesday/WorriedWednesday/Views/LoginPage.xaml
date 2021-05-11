@@ -15,10 +15,12 @@
     <StackLayout x:Name="loginStackLayout"
              VerticalOptions="Center"
              IsVisible="True">
-      <Entry Placeholder="Email"
+      <Entry x:Name="emailEntry"
+             Placeholder="Email"
            Keyboard="Email"
            Text="{Binding Email, Mode=TwoWay}"/>
-      <Entry Placeholder="Password"
+      <Entry x:Name="passwordEntry"
+             Placeholder="Password"
            IsPassword="True"
            Text="{Binding Password, Mode=TwoWay}"/>
       <Button Text="Login"

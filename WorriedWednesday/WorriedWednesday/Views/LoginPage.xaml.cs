@@ -12,10 +12,17 @@ namespace WorriedWednesday.Views
   [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class LoginPage : ContentPage
   {
+    IAuth auth;
     public LoginPage()
     {
-        InitializeComponent();
+      InitializeComponent();
+      auth = DependencyService.Get<IAuth>();
     }
+    protected override async void OnAppearing()
+    {
+      base.OnAppearing();
+    }
+
     void RegisterLabel_Tapped(object sender, EventArgs args)
     {
       registerStackLayout.IsVisible = true;

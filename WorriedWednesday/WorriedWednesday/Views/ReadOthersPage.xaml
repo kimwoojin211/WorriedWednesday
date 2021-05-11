@@ -8,7 +8,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-            <Button Text="Sign Out!!!" Clicked="OnSignOutButtonClicked"/>
+            <!--<Button Text="Sign Out!!!" Clicked="OnSignOutButtonClicked"/>-->
     </StackLayout>
     </ContentPage.Content>
 </ContentPage>
