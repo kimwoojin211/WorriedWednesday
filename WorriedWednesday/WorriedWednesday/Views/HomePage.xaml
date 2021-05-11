@@ -10,8 +10,15 @@
             TextColor="Black" 
             FontSize="36" 
             IsVisible="True" />
+    <StackLayout VerticalOptions="CenterAndExpand">
 
-    <Button Text="Sign Out" Clicked="OnButtonClicked" />
+      <Button Text="Sign In" Clicked="OnLogInButtonClicked"/>
+      <!--<Button Text="Write Message" />
+      <Button Text="Read Other's Worries" />
+      <Button Text="Read Your Worry Replies" />
+      <Button Text="Settings" Clicked="OnSignOutButtonClicked"/>
+      <Button Text="Feel Good" />-->
+    </StackLayout>
   </StackLayout>
 
 </ContentPage>

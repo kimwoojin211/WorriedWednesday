@@ -1,37 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WorriedWednesday.Views
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class HomePage : ContentPage
+  public partial class ReadOthersPage : ContentPage
   {
     IAuth auth;
-
-    public HomePage()
+    public ReadOthersPage()
     {
       InitializeComponent();
       auth = DependencyService.Get<IAuth>();
     }
-
     protected override async void OnAppearing()
     {
       base.OnAppearing();
-      if (auth.IsSignIn())
+      if (!auth.IsSignIn())
       {
+        Console.WriteLine("BOOOOOOOOOOOOOOOO");
         await Task.Delay(300);
+        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+      }
+      else
+      {
+        Console.WriteLine("YAYYYYYYYYYYYYY");
       }
     }
-
-    async void OnLogInButtonClicked(object sender, EventArgs e)
+    async void OnSignOutButtonClicked(object sender, EventArgs e)
     {
-      await Navigation.PushAsync(new LoginPage());
+      auth.SignOut();
+      await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }
   }
 }

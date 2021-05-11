@@ -36,7 +36,10 @@ namespace WorriedWednesday.ViewModel
         var user = auth.RegisterWithEmailAndPassword(email, password);
         if (user != null)
         {
-          await Application.Current.MainPage.Navigation.PopAsync();
+          name = "";
+          email = "";
+          password = "";
+          await Shell.Current.GoToAsync($"//{nameof(ReadOthersPage)}");
         }
       }
     }
@@ -46,7 +49,10 @@ namespace WorriedWednesday.ViewModel
       string token = await auth.LoginWithEmailAndPassword(email, password);
       if (token != string.Empty)
       {
-        await Application.Current.MainPage.Navigation.PopAsync();
+        name = "";
+        email = "";
+        password = "";
+        await Shell.Current.GoToAsync($"//{nameof(ReadOthersPage)}");
       }
     }
     void OnPropertyChanged(string propertyName)

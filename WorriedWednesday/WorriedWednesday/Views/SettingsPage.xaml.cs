@@ -12,9 +12,17 @@ namespace WorriedWednesday.Views
   [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class SettingsPage : ContentPage
   {
+    IAuth auth;
+
     public SettingsPage()
     {
       InitializeComponent();
+      auth = DependencyService.Get<IAuth>();
+    }
+    async void OnSignOutButtonClicked(object sender, EventArgs e)
+    {
+      auth.SignOut();
+      await Navigation.PushAsync(new LoginPage());
     }
   }
 }

@@ -11,7 +11,7 @@ namespace WorriedWednesday
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

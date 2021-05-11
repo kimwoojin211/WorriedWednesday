@@ -19,8 +19,8 @@
     <Compile Update="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ReadOthersMessagesPage.xaml.cs">
-      <DependentUpon>ReadOthersMessagesPage.xaml</DependentUpon>
+    <Compile Update="Views\ReadOthersPage.xaml.cs">
+      <DependentUpon>ReadOthersPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\UserMessagesPage.xaml.cs">
       <DependentUpon>UserMessagesPage.xaml</DependentUpon>
@@ -28,7 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\ReadOthersMessagesPage.xaml">
+    <EmbeddedResource Update="AppShell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ReadOthersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginPage.xaml">
