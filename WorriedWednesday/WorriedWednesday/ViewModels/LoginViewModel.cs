@@ -7,7 +7,7 @@ using System.Windows.Input;
 using WorriedWednesday.Views;
 
 
-namespace WorriedWednesday.ViewModel
+namespace WorriedWednesday.ViewModels
 {
   public class LoginViewModel : INotifyPropertyChanged
   {

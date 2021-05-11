@@ -1,0 +1,44 @@
+Name of Project: Worried Wednesdays (Alternate Name: Warm & Fuzzies)
+
+Project's Purpose or Goal (What will it do for users):
+
+Based off the concept of [Kind Words (lo fi chill beats to write to)](https://popcannibal.com/kindwords/), as well as a thing I do on my social network, I want to make a cross-mobile/web application for people to anonymously write their problems and concerns that other users can read and write back words of encouragement, also anonymously. The goal of the project is not just to encourage ~*~*positive*~*vibes*~*~, but to help perpetuate the idea that sharing one's worries to others will ease the burden of keeping them bottled within, and that there will always be someone out there will be willing to provide a safe space and listen. Kind Words currenlty only has a desktop version, and so I wanted to try my hand at making a mobile/web version.
+
+List the absolute minimum features the project requires to meet this purpose or goal:
+
+- Allow people to register an account that is anonymous in every way (including the MVP features below) to everyone except the user and server.
+- Allow a user to post an anonymous "worry"(char limit?) to a general space that all users can access to read (multiple? 1 at a time?)
+- Build and maintain a database for users and messages
+- Allow a user to anonymously write a warm or encouraging reply ("warm&fuzzy") to a "worry" floating in the general space.
+- Allow a user to read anonymous replies to posted "worries" (Note: user can ONLY read replies. a user CANNOT reply to replies)
+- Allow a user to delete and/or report mean/hateful/troll replies to their worries.
+
+What tools, frameworks, libraries, APIs, modules andor other resources (whatever is specific to your track, and your language) will you use to create this MVP List them all here. Be specific.
+
+- Xamarin.Forms 
+- C#
+- .NET5.0
+- CSS
+- SQL
+- VS Code
+
+
+If you finish developing the minimum viable product (MVP) with time to spare, what will you work on next? Describe these features here. Be specific.
+
+- Provide tips and links to mental/emotional health resources.
+- Develop an algorithm of sorting "worries" when displayed, giving higher priority for display to newer and unresponded messages.
+- Impose character limit on "worries" & replies, but allow users to write up to like 3 "pages" (like stacked sticky notes)
+- Filter messages to block links or keywords (and present the reason for filtering their message to the user)
+- Develop & train a machine learning algorithm to filter mean/hateful/troll messages (SUPER stretch) (or just use one on the internet)
+- Have "worries" actually visually "floating" in a designated general space, that a user can click in order to read the "worry" (Maybe don't even have a message preloaded, instead have a "random" worry load on click)
+- Stylize replies to worries look like cute warm & fuzzy creatures that somehow present the message to the user
+- Have music playing in the background
+- Allow users to also send gifs with their replies
+- Allow users to send emoji reactions in response to replies (i.e. thumbs up, heart, smile, happy cry, nod, prayer hands, etc.)
+
+
+What additional tools, frameworks, libraries, APIs, or other resources will these additional features require
+
+- Machine Learning: RapidMiner, Apache Spark, Tableau
+- Gif: Giphy API
+- Music: Spotify/Pandora/etc. API

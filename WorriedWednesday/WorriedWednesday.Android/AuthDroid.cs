@@ -2,8 +2,11 @@
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Firebase.Firestore;
 using Firebase.Auth;
 using Android.Gms.Extensions;
+using WorriedWednesday.Models;
+
 
 [assembly: Dependency(typeof(WorriedWednesday.Droid.AuthDroid))]
 namespace WorriedWednesday.Droid
@@ -70,6 +73,13 @@ namespace WorriedWednesday.Droid
         e.PrintStackTrace();
         return string.Empty;
       }
+    }
+
+    public Task<AuthenticatedUser> GetUserAsync()
+    {
+      var tcs = new TaskCompletionSource<AuthenticatedUser>();
+      FirebaseFirestore.Instance.Collection("users").Document(FirebaseAuth.Instance.CurrentUser.Uid).Get().AddOnCompleteListener(new OnCompleteListener(tcs));
+      return tcs.Task;
     }
   }
 }
