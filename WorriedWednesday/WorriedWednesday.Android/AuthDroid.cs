@@ -6,7 +6,7 @@ using Firebase.Firestore;
 using Firebase.Auth;
 using Android.Gms.Extensions;
 using WorriedWednesday.Models;
-
+using WorriedWednesday.Services;
 
 [assembly: Dependency(typeof(WorriedWednesday.Droid.AuthDroid))]
 namespace WorriedWednesday.Droid

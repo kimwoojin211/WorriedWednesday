@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Android.Gms.Tasks;
-using Android.App;
 using Firebase.Firestore;
 using WorriedWednesday.Models;
 

@@ -31,7 +31,7 @@
 
   <TabBar>
       <ShellContent Title="dUMB" Icon="icon_about.png" Route="ReadOthersPage" ContentTemplate="{DataTemplate local:ReadOthersPage}"/>
-      <ShellContent Title="dUMBER" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:SettingsPage}"/>
+      <ShellContent Title="dUMBER" Icon="settings.png" ContentTemplate="{DataTemplate local:SettingsPage}"/>
     </TabBar>
 
   <!--

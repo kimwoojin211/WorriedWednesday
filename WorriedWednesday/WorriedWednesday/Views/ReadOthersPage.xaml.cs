@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WorriedWednesday.Services;
 
 namespace WorriedWednesday.Views
 {
@@ -23,6 +24,11 @@ namespace WorriedWednesday.Views
       base.OnAppearing();
       if (!auth.IsSignIn())
       {
+        var user = await auth.GetUserAsync();
+        if(user != null)
+        {
+
+        }
         await Task.Delay(300);
         await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
       }

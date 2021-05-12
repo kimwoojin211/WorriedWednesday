@@ -4,7 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.Models;
 
-namespace WorriedWednesday
+namespace WorriedWednesday.Services
+
 {
   public interface IAuth
   {

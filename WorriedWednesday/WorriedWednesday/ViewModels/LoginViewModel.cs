@@ -5,7 +5,7 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using System.Windows.Input;
 using WorriedWednesday.Views;
-
+using WorriedWednesday.Services;
 
 namespace WorriedWednesday.ViewModels
 {
