@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WorriedWednesday.Services;
 
-namespace WorriedWednesday.Views
+namespace WorriedWednesday.Pages
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class LoginPage : ContentPage

@@ -16,7 +16,7 @@ namespace WorriedWednesday.Services.Navigation
      * <param name="setRoot"></param>
      * <returns></returns>
      */
-    Task NavigateToAsync<TPageModelBase>(object navigationData = null, bool setRoot = false);\\
+    Task NavigateToAsync<TPageModelBase>(object navigationData = null, bool setRoot = false);
 
     // <summary>
     // Navigation method to pop off of the Navigation Stack

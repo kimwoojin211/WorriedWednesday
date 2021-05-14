@@ -30,7 +30,7 @@ namespace WorriedWednesday.Views
 
         }
         await Task.Delay(300);
-        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+        await Navigation.PushAsync(new LoginPage()); ;
       }
     }
     //async void OnSignOutButtonClicked(object sender, EventArgs e)

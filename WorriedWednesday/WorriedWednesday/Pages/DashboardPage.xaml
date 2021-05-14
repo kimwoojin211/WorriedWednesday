@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorriedWednesday.Pages.DashboardPage"
+            xmlns:pages="clr-namespace:WorriedWednesday.Pages">
+  <TabbedPage.Children>
+    <NavigationPage Title="Read Others' Worries">
+      <x:Arguments>
+        <pages:ReadOthersPage/>
+      </x:Arguments>
+    </NavigationPage>
+      
+    <NavigationPage Title="Your worries">
+      <x:Arguments>
+        <pages:UserWorriesPage/>
+      </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Settings">
+      <x:Arguments>
+        <pages:SettingsPage/>
+      </x:Arguments>
+    </NavigationPage>
+  </TabbedPage.Children>
+  
+</TabbedPage>

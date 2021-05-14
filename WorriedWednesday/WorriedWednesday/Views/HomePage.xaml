@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WorriedWednesday.Views.HomePage">
 
-  <StackLayout>
+<!--  <StackLayout>
 
     <Label Text="Worried Wednesday!" 
             HorizontalTextAlignment="Center" 
@@ -13,12 +13,12 @@
     <StackLayout VerticalOptions="CenterAndExpand">
 
       <Button Text="Sign In" Clicked="OnLogInButtonClicked"/>
-      <!--<Button Text="Write Message" />
+      <Button Text="Write Message" />
       <Button Text="Read Other's Worries" />
       <Button Text="Read Your Worry Replies" />
       <Button Text="Settings" Clicked="OnSignOutButtonClicked"/>
-      <Button Text="Feel Good" />-->
+      <Button Text="Feel Good" />
     </StackLayout>
-  </StackLayout>
+  </StackLayout>-->
 
 </ContentPage>

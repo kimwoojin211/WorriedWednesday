@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using WorriedWednesday.PageModels.Base;
 
-namespace WorriedWednesday.PageModels
+namespace WorriedWednesday
 {
-  public class ReadOthersPageModel : PageModelBase
+  public class WriteMessagePageModel : PageModelBase
   {
   }
 }

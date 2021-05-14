@@ -16,14 +16,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\LoginPage.xaml.cs">
+    <Compile Update="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ReadOthersPage.xaml.cs">
+    <Compile Update="Pages\ReadOthersPage.xaml.cs">
       <DependentUpon>ReadOthersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\UserMessagesPage.xaml.cs">
-      <DependentUpon>UserMessagesPage.xaml</DependentUpon>
+    <Compile Update="Pages\ReadRepliesPage.xaml.cs">
+      <DependentUpon>ReadRepliesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\UserWorriesPage.xaml.cs">
+      <DependentUpon>UserWorriesPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -31,22 +34,25 @@
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ReadOthersPage.xaml">
+    <EmbeddedResource Update="Pages\DashboardPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginPage.xaml">
+    <EmbeddedResource Update="Pages\ReadOthersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SettingsPage.xaml">
+    <EmbeddedResource Update="Pages\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserMessageRepliesPage.xaml">
+    <EmbeddedResource Update="Pages\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserMessagesPage.xaml">
+    <EmbeddedResource Update="Pages\ReadRepliesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\WriteMessagePage.xaml">
+    <EmbeddedResource Update="Pages\UserWorriesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\WriteMessagePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

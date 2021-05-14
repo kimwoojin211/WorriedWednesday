@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using WorriedWednesday.ViewModels;
+//using WorriedWednesday.ViewModels;
 using WorriedWednesday.Views;
 
 using System.Threading.Tasks;

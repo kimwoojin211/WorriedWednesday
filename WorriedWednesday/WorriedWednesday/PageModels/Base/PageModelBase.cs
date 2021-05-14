@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace WorriedWednesday.Base
+namespace WorriedWednesday.PageModels.Base
 {
   public class PageModelBase : BindableObject
   {

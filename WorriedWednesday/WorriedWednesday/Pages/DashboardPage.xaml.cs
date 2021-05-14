@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace WorriedWednesday.Views
+namespace WorriedWednesday.Pages
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class UserMessageRepliesPage : ContentPage
+  public partial class DashboardPage : TabbedPage
   {
-    public UserMessageRepliesPage()
+    public DashboardPage()
     {
       InitializeComponent();
     }

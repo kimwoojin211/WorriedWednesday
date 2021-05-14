@@ -5,7 +5,7 @@ using WorriedWednesday.PageModels.Base;
 
 namespace WorriedWednesday.PageModels
 {
-  public class ReadOthersPageModel : PageModelBase
+  public class UserWorriesPageModel : PageModelBase
   {
   }
 }

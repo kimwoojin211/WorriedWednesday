@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using WorriedWednesday.Base;
+using WorriedWednesday.PageModels.Base;
 using WorriedWednesday.Services.Navigation;
 using Xamarin.Forms;
 

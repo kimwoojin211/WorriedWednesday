@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WorriedWednesday.Services;
+using WorriedWednesday.Pages;
 
 namespace WorriedWednesday.Views
 {
