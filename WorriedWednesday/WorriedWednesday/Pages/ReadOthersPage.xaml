@@ -1,21 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:WorriedWednesday.PageModels"
+             xmlns:pm="clr-namespace:WorriedWednesday.PageModels"
+             xmlns:m="clr-namespace:WorriedWednesday.Models"
+             xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons"
              x:Class="WorriedWednesday.Pages.ReadOthersPage">
 
-  <!--  <ContentPage.Resources>
+  <!--<ContentPage.Resources>
     <ResourceDictionary>
-      <vm:ReadOthersViewModel x:Key="vm"/>
+      <pm:ReadOthersPageModel x:Key="pm"/>
+      <m:Worry x:Key="m"/>
     </ResourceDictionary>
-  </ContentPage.Resources>
+  </ContentPage.Resources>-->
 
-  <StackLayout BindingContext="{StaticResource vm}">
-    <Label Text="Welcome to Xamarin.Forms!"
-          VerticalOptions="CenterAndExpand" 
-          HorizontalOptions="CenterAndExpand" />
-    <Label x:Name="authenticatedUser " 
-          Text="{Binding UserName}" />
-    <Button Text="Sign Out!!!" Clicked="OnSignOutButtonClicked"/>
-  </StackLayout>-->
+  <StackLayout>
+    
+    <!--<StackLayout BindingContext="{StaticResource pm}">
+      <Label x:Name="authenticatedUser " 
+            Text="{Binding UserName, StringFormat='Welcome {0}!'}" />
+      <Label Text="Swipe right or left to read more worries" />
+    </StackLayout>
+
+    <StackLayout VerticalOptions="Center" 
+                 HorizontalOptions="Center" 
+                 BindingContext="{StaticResource m}">
+      <Label Text="{Binding Text}" />
+    </StackLayout>-->
+    <buttons:BindableButton BindingContext="{Binding WriteWorryButtonModel}"
+                              HorizontalOptions="Center"
+                              WidthRequest="150"
+                              VerticalOptions="End"/>
+    <Label BackgroundColor="{StaticResource Primary}"
+           Text="hi"
+           VerticalOptions="FillAndExpand"/>
+    <buttons:BindableButton BindingContext="{Binding ReplyButtonModel}"
+                              HorizontalOptions="Center"
+                              WidthRequest="150"
+                              VerticalOptions="End"/>
+  </StackLayout>
 </ContentPage>

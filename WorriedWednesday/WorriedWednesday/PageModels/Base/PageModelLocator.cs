@@ -22,18 +22,19 @@ namespace WorriedWednesday.PageModels.Base
       _viewLookup = new Dictionary<Type, Type>();
 
       // register pages and page models
-      Register<LoginPageModel, LoginPage>();
       Register<DashboardPageModel, DashboardPage>();
-      //Register<ReadOthersPageModel, ReadOthersPage>();
+      Register<LoginPageModel, LoginPage>();
+      Register<ReadOthersPageModel, ReadOthersPage>();
+      Register<UserWorriesPageModel, UserWorriesPage>();
+      Register<SettingsPageModel, SettingsPage>();
+      Register<WriteWorryPageModel, WriteWorryPage>();
       //Register<ReadRepliesPageModel, ReadRepliesPage>();
-      //Register<UserWorriesPageModel, UserWorriesPage>();
-      //Register<WriteMessagePageModel, WriteMessagePage>();
-      //Register<SettingsPageModel, SettingsPage>();
 
 
       // Register services (services are registered as Singletons default)
       _container.Register<INavigationService, NavigationService>();
-      _container.Register<IAccountService, AccountService>();
+      _container.Register<IAccountService,AccountService>();
+
 
     }
 

@@ -7,9 +7,9 @@ namespace WorriedWednesday.Services.Account
 {
   public class AccountService :IAccountService
   {
-    public Task<bool> LoginAsync(string username, string password)
+    public Task<bool> LoginAsync(string email, string password)
     {
-      if(string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+      if(string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
       {
         return Task.FromResult(false);
       }

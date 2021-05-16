@@ -13,11 +13,11 @@ namespace WorriedWednesday.Pages
   [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class LoginPage : ContentPage
   {
-    IAuth auth;
+    //IAuth auth;
     public LoginPage()
     {
       InitializeComponent();
-      auth = DependencyService.Get<IAuth>();
+      //auth = DependencyService.Get<IAuth>();
     }
 
 

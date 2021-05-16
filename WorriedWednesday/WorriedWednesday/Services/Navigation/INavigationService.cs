@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WorriedWednesday.PageModels.Base;
 
 namespace WorriedWednesday.Services.Navigation
 {
@@ -16,7 +17,9 @@ namespace WorriedWednesday.Services.Navigation
      * <param name="setRoot"></param>
      * <returns></returns>
      */
-    Task NavigateToAsync<TPageModelBase>(object navigationData = null, bool setRoot = false);
+    Task NavigateToAsync<TPageModelBase>(object navigationData = null, bool setRoot = false)
+        where TPageModelBase : PageModelBase;
+      // where TPageModelBase : PageModelBase enforces that you only navigate forward in a pagemodelbase
 
     // <summary>
     // Navigation method to pop off of the Navigation Stack

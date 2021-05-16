@@ -2,23 +2,26 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WorriedWednesday.Pages.DashboardPage"
-            xmlns:pages="clr-namespace:WorriedWednesday.Pages">
+            xmlns:pages="clr-namespace:WorriedWednesday.Pages"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+  
   <TabbedPage.Children>
-    <NavigationPage Title="Read Others' Worries">
+    <NavigationPage Title="Others' Worries">
       <x:Arguments>
-        <pages:ReadOthersPage/>
+        <pages:ReadOthersPage BindingContext="{Binding ReadOthersPageModel}" />
       </x:Arguments>
     </NavigationPage>
       
     <NavigationPage Title="Your worries">
       <x:Arguments>
-        <pages:UserWorriesPage/>
+        <pages:UserWorriesPage BindingContext="{Binding UserWorriesPageModel}"/>
       </x:Arguments>
     </NavigationPage>
 
     <NavigationPage Title="Settings">
       <x:Arguments>
-        <pages:SettingsPage/>
+        <pages:SettingsPage BindingContext="{Binding SettingsPageModel}"/>
       </x:Arguments>
     </NavigationPage>
   </TabbedPage.Children>

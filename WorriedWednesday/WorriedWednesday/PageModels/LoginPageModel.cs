@@ -19,7 +19,7 @@ namespace WorriedWednesday.PageModels
     {
       _navigationService = navigationService;
       _accountService = accountService;
-      LoginCommand = new Command(Login);
+      LoginCommand = new Command(DoLoginAction);
       //RegisterCommand = new Command(Register);
       //auth = DependencyService.Get<IAuth>();
     }
@@ -30,7 +30,7 @@ namespace WorriedWednesday.PageModels
     }
 
     //IAuth auth;
-    string _name, _email, _password;
+    string _name, _email, _password, _confirmPassword;
 
     //public event PropertyChangedEventHandler PropertyChanged;
 
@@ -61,7 +61,7 @@ namespace WorriedWednesday.PageModels
       var loginAttempt = await _accountService.LoginAsync(Email, Password);
       if(loginAttempt)
       {
-        await _navigationService.NavigateToAsync<ReadOthersPageModel>();
+        await _navigationService.NavigateToAsync<DashboardPageModel>();
       }
       else
       {
@@ -80,22 +80,19 @@ namespace WorriedWednesday.PageModels
       //  await _navigationService.NavigateToAsync<ReadOthersPageModel>();
       //}
     }
-    //  void OnPropertyChanged(string propertyName)
-    //  {
-    //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    //  }
-    //  public string Name
-    //  {
-    //    get
-    //    {
-    //      return name;
-    //    }
-    //    set
-    //    {
-    //      name = value;
-    //      OnPropertyChanged("Name");
-    //    }
-    //  }
+
+    // unneeded because of ExtendedBindableObject's SetProperty()
+
+    //void OnPropertyChanged(string propertyName)
+    //{
+    //  PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //}
+
+    public string Name
+    {
+      get => _name;
+      set => SetProperty(ref _name, value);
+    }
 
     public string Email
     {
@@ -110,19 +107,10 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _password, value);
     }
 
-    //  string confirmPassword;
-    //  public string ConfirmPassword
-    //  {
-    //    get
-    //    {
-    //      return confirmPassword;
-    //    }
-    //    set
-    //    {
-    //      confirmPassword = value;
-    //    }
-    //  }
-    //}
-
+    public string ConfirmPassword
+    {
+      get => _confirmPassword;
+      set => SetProperty(ref _confirmPassword, value);
+    }
   }
 }

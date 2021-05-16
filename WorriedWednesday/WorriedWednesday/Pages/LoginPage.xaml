@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:WorriedWednesday.PageModels"
-             Shell.TabBarIsVisible="False"
+             xmlns:models="clr-namespace:WorriedWednesday.Models"
              Title="Login"
              x:Class="WorriedWednesday.Pages.LoginPage">
   
@@ -48,8 +48,8 @@
       <Entry Placeholder="Confirm password"
            IsPassword="True"
             Text="{Binding ConfirmPassword, Mode=TwoWay}"/>
-      <Button Text="Register"
-        Command="{Binding RegisterCommand}"/>
+      <!--<Button Text="Register"
+        Command="{Binding RegisterCommand}"/>-->
       <StackLayout Orientation="Horizontal">
         <Label Text="Already have an account?"/>
         <Label Text="Login">

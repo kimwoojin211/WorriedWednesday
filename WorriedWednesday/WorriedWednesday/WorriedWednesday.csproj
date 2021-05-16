@@ -28,6 +28,12 @@
     <Compile Update="Pages\UserWorriesPage.xaml.cs">
       <DependentUpon>UserWorriesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\WriteWorryPage.xaml.cs">
+      <DependentUpon>WriteWorryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Buttons\BindableButton.xaml.cs">
+      <DependentUpon>BindableButton.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -52,7 +58,10 @@
     <EmbeddedResource Update="Pages\UserWorriesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\WriteMessagePage.xaml">
+    <EmbeddedResource Update="Pages\WriteWorryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Buttons\BindableButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

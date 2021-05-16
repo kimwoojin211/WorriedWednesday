@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WorriedWednesday.Pages.SettingsPage"
-             Title="Settings"
-             xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons">
+             x:Class="WorriedWednesday.Pages.WriteWorryPage"
+             xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons"
+             >
   <ContentPage.Content>
     <StackLayout>
-
-      <buttons:BindableButton BindingContext="{Binding LogOutButtonModel}"
+      <Entry Text="{Binding Text}"
+             VerticalOptions="FillAndExpand"/>
+      <buttons:BindableButton BindingContext="{Binding SubmitButtonModel}"
                               HorizontalOptions="Center"
                               WidthRequest="150"
-                              VerticalOptions="CenterAndExpand"/>
+                              VerticalOptions="End"/>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

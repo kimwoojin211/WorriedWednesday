@@ -14,11 +14,10 @@ namespace WorriedWednesday.Pages
   public partial class ReadOthersPage : ContentPage
   {
     //    IAuth auth;
-    //    public ReadOthersPage()
-    //    {
-    //      InitializeComponent();
-    //      auth = DependencyService.Get<IAuth>();
-    //    }
+    public ReadOthersPage()
+    {
+      InitializeComponent();
+    }
     //    protected override async void OnAppearing()
     //    {
     //      base.OnAppearing();

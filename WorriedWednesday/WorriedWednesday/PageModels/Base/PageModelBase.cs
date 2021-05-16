@@ -7,17 +7,18 @@ using Xamarin.Forms;
 
 namespace WorriedWednesday.PageModels.Base
 {
-  public class PageModelBase : BindableObject
+  public class PageModelBase : ExtendedBindableObject
   {
     string _title;
+    bool _isLoading;
 
+    //title of page 
     public string Title
     {
       get => _title;
       set => SetProperty(ref _title, value);
     }
 
-    bool _isLoading;
 
     public bool IsLoading
     {
@@ -25,21 +26,25 @@ namespace WorriedWednesday.PageModels.Base
       set => SetProperty(ref _isLoading, value);
     }
 
+
     public virtual Task InitializeAsync(object navigationData = null)
     {
       return Task.CompletedTask;
     }
 
-    protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName]string propertyName = null)
-    {
-      if (EqualityComparer<T>.Default.Equals(storage, value))
-      {
-        return false;
-      }
+    //moved to extended bindable object
 
-      storage = value;
-      OnPropertyChanged(propertyName);
-      return true;
-    }
+    //protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName]string propertyName = null)
+    //{
+    //  if (EqualityComparer<T>.Default.Equals(storage, value))
+    //  {
+    //    return false;
+    //  }
+
+    //  storage = value;
+    //  OnPropertyChanged(propertyName);
+    //  return true;
+    //}
+
   }
 }

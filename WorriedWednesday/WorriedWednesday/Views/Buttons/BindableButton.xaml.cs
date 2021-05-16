@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace WorriedWednesday.Views
+namespace WorriedWednesday.Views.Buttons
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class WriteMessagePage : ContentPage
+  public partial class BindableButton : Button
   {
-    public WriteMessagePage()
+    public BindableButton()
     {
       InitializeComponent();
     }
