@@ -6,6 +6,9 @@
              >
   <ContentPage.Content>
     <StackLayout>
+      <Label Text="Id"/>
+      <Entry Text="{Binding Id, Mode=TwoWay}"/>
+      <Label Text="Message"/>
       <Entry Text="{Binding Message, Mode=TwoWay}"
              VerticalOptions="FillAndExpand"/>
       <buttons:BindableButton BindingContext="{Binding SubmitButtonModel}"

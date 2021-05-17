@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.Models;
 
-namespace WorriedWednesday.Services.UserWorry
+namespace WorriedWednesday.Services.AllWorries
 {
-  public class MockUserWorryService : IUserWorryService
+  public class MockAllWorriesService : IAllWorriesService
   {
     public List<Worry> Worries { get; set; }
-    public MockUserWorryService()
+    public MockAllWorriesService()
     {
       Worries = new List<Worry>();
     }

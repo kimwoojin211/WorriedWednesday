@@ -16,9 +16,10 @@ namespace WorriedWednesday.Services.Account
       }
       return Task.Delay(500).ContinueWith((Task) => true);
     }
-    public Task<List<Worry>> GetWorriesAsync()
-    {
-      return Task.FromResult(new List<Worry>());
-    } 
+    //public Task<bool> LogWorryAsync(Worry worry)
+    //{
+    //  Worries.Insert(0, worry);
+    //  return Task.FromResult(true);
+    //}
   }
 }

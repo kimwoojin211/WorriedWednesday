@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.Models;
 
-namespace WorriedWednesday.Services.UserWorry
+namespace WorriedWednesday.Services.AllWorries
 {
-  public interface IUserWorryService
+  public interface IAllWorriesService
   {
     Task<bool> LogWorryAsync(Worry worry);
     Task<ObservableCollection<Worry>> GetWorriesAsync();

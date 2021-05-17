@@ -7,7 +7,7 @@ using WorriedWednesday.Models;
 using WorriedWednesday.PageModels.Base;
 using WorriedWednesday.Services.Account;
 using WorriedWednesday.Services.Navigation;
-using WorriedWednesday.Services.UserWorry;
+using WorriedWednesday.Services.AllWorries;
 using WorriedWednesday.ViewModels.Buttons;
 
 namespace WorriedWednesday.PageModels
@@ -21,13 +21,13 @@ namespace WorriedWednesday.PageModels
     ButtonModel _writeWorryButtonModel;
     INavigationService _navigationService;
     IAccountService _accountService;
-    IUserWorryService _userWorryService;
+    IAllWorriesService _allWorriesService;
     public UserWorriesPageModel(INavigationService navigationService, 
                                 IAccountService accountService, 
-                                IUserWorryService userWorryService)
+                                IAllWorriesService allWorriesService)
     {
       _accountService = accountService;
-      _userWorryService = userWorryService;
+      _allWorriesService = allWorriesService;
       _navigationService = navigationService;
       WriteWorryButtonModel = new ButtonModel("New Worry", WriteAction);
     }
@@ -60,7 +60,7 @@ namespace WorriedWednesday.PageModels
     }
     public override async Task InitializeAsync(object navigationData)
     {
-      Worries = await _userWorryService.GetWorriesAsync();
+      Worries = await _allWorriesService.GetWorriesAsync();
       await base.InitializeAsync(navigationData);
     }
 

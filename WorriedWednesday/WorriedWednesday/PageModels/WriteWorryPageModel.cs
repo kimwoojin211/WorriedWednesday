@@ -5,31 +5,37 @@ using WorriedWednesday.Models;
 using WorriedWednesday.PageModels;
 using WorriedWednesday.PageModels.Base;
 using WorriedWednesday.Services.Navigation;
-using WorriedWednesday.Services.UserWorry;
+using WorriedWednesday.Services.AllWorries;
 using WorriedWednesday.ViewModels.Buttons;
 
 namespace WorriedWednesday
 {
   public class WriteWorryPageModel : PageModelBase
   {
-    string _message;
+    string _message, _id;
     ButtonModel _submitButtonModel;
     INavigationService _navigationService;
-    IUserWorryService _userWorryService;
+    IAllWorriesService _userWorryService;
     public WriteWorryPageModel(INavigationService navigationService, 
-                                IUserWorryService userWorryService)
+                                IAllWorriesService userWorryService)
     {
       _userWorryService = userWorryService;
       _navigationService = navigationService;
       SubmitButtonModel = new ButtonModel("Submit", SubmitAction);
     }
 
+  
     public string Message
     {
       get => _message;
       set => SetProperty(ref _message, value);
     }
 
+    public string Id
+    {
+      get => _id;
+      set => SetProperty(ref _id, value);
+    }
     public ButtonModel SubmitButtonModel
     {
       get => _submitButtonModel;
@@ -37,16 +43,13 @@ namespace WorriedWednesday
     }
     private async void SubmitAction()
     {
-      //Timestamp = DateTime.Now
-      Console.WriteLine(Message);
       var item = new Worry
       {
         Message = Message,
         Timestamp = DateTime.Now,
         Replies = new List<string>(),
-        userId = "1"
+        userId = Id
       };
-      //Worries.Insert(0, new Worry { Message, Timestamp, Replies, UserId }
       await _userWorryService.LogWorryAsync(item);
       await _navigationService.NavigateToAsync<DashboardPageModel>();
     }
