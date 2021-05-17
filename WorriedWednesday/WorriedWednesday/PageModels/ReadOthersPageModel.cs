@@ -15,7 +15,7 @@ namespace WorriedWednesday.PageModels
   public class ReadOthersPageModel : PageModelBase
   {
     string _username, _message;
-    ButtonModel _replyButtonModel, _writeWorryButtonModel;
+    ButtonModel _replyButtonModel, _writeWorryButtonModel, _nextWorryButtonModel, _prevWorryButtonModel;
     List<Worry> _othersWorries;
     Worry _currentWorry;
     INavigationService _navigationService;
@@ -28,6 +28,8 @@ namespace WorriedWednesday.PageModels
       _allWorriesService = allWorriesService;
       ReplyButtonModel = new ButtonModel("Reply", ReplyAction);
       WriteWorryButtonModel = new ButtonModel("New Worry", WriteAction);
+      PrevWorryButtonModel = new ButtonModel("Prev Worry", PrevWorryAction);
+      NextWorryButtonModel = new ButtonModel("Next Worry", NextWorryAction);
     }
 
     public string Message
@@ -54,43 +56,87 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _writeWorryButtonModel, value);
     }
 
+    public ButtonModel PrevWorryButtonModel
+    {
+      get => _prevWorryButtonModel;
+      set => SetProperty(ref _prevWorryButtonModel, value);
+    }
+
+    public ButtonModel NextWorryButtonModel
+    {
+      get => _nextWorryButtonModel;
+      set => SetProperty(ref _nextWorryButtonModel, value);
+    }
+
     public Worry CurrentWorry
     {
       get => _currentWorry;
       set => SetProperty(ref _currentWorry, value);
     }
 
-    //public ObservableCollection<Worry> OthersWorries
-    //{
-    //  get => _othersWorries;
-    //  set => SetProperty(ref _othersWorries, value);
-    //}
-
     private void ReplyAction()
     {
       //navigate to write reply page
       //or just make it so that a text input pop up comes up
       //or something
-      throw new NotImplementedException();
     }
     private async void WriteAction()
     {
       await _navigationService.NavigateToAsync<WriteWorryPageModel>();
     }
+    private void PrevWorryAction()
+    {
+      int index = _othersWorries.FindIndex(worry => worry.Equals(CurrentWorry));
+      if (index == 0 && NextWorryButtonModel.IsEnabled)
+      {
+        CurrentWorry = _othersWorries[_othersWorries.Count-1];
+      }
+      else
+      {
+        CurrentWorry = _othersWorries[--index];
+      }
+    }
 
+    private void NextWorryAction()
+    {
+      int index = _othersWorries.FindIndex(worry => worry.Equals(CurrentWorry));
+      if (index == _othersWorries.Count-1)
+      {
+        CurrentWorry = _othersWorries[0];
+      }
+      else
+      {
+        CurrentWorry = _othersWorries[++index];
+      }
+    }
     public override async Task InitializeAsync(object navigationData)
     {
-      ObservableCollection<Worry> temp = await _allWorriesService.GetWorriesAsync();
-      _othersWorries = temp.ToList();
-      Console.WriteLine("SURVEY SAYS: " + _othersWorries.Any());
-      if (_othersWorries.Any())
+      _othersWorries = await _allWorriesService.GetWorriesAsync();
+
+      if(!_othersWorries.Any())
       {
-        Console.WriteLine("~*~*~        **~*~" + _othersWorries[0] + "~*~~*~         **~~**~~*");
-
-        CurrentWorry = _othersWorries[0];
-        Console.WriteLine(CurrentWorry.Message);
-
+        CurrentWorry = new Worry
+        {
+          Message = "No new Worries!"
+        };
+        PrevWorryButtonModel.IsEnabled = false;
+        NextWorryButtonModel.IsEnabled = false;
       }
+      else
+      {
+        CurrentWorry = _othersWorries[0];
+        if(_othersWorries.Count == 1)
+        {
+          PrevWorryButtonModel.IsEnabled = false;
+          NextWorryButtonModel.IsEnabled = false;
+        }
+        else
+        {
+          PrevWorryButtonModel.IsEnabled = true;
+          NextWorryButtonModel.IsEnabled = true;
+        }
+      }
+
       await base.InitializeAsync(navigationData);
     } 
   }

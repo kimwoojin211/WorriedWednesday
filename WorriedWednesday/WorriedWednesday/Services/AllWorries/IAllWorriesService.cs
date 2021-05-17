@@ -10,6 +10,6 @@ namespace WorriedWednesday.Services.AllWorries
   public interface IAllWorriesService
   {
     Task<bool> LogWorryAsync(Worry worry);
-    Task<ObservableCollection<Worry>> GetWorriesAsync();
+    Task<List<Worry>> GetWorriesAsync();
   }
 }

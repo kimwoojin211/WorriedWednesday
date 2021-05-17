@@ -40,12 +40,18 @@
            HorizontalOptions="FillAndExpand"
            Padding="50,100,50,100"/>
     <StackLayout BackgroundColor="{StaticResource Primary}"
-                 Orientation="Horizontal">
-      <buttons:BindableButton BindingContext="{Binding ReplyButtonModel}"
-                                HorizontalOptions="Center"
-                                WidthRequest="150"
-                                VerticalOptions="End"/>
-
+>
+      <StackLayout Orientation="Horizontal"
+                  HorizontalOptions="CenterAndExpand">
+        <buttons:BindableButton BindingContext="{Binding PrevWorryButtonModel}"
+                                  WidthRequest="125"/>
+      
+        <buttons:BindableButton BindingContext="{Binding ReplyButtonModel}"
+                                  WidthRequest="125"/>
+      
+        <buttons:BindableButton BindingContext="{Binding NextWorryButtonModel}"
+                                  WidthRequest="125"/>
+      </StackLayout>
     </StackLayout>
   </StackLayout>
 </ContentPage>

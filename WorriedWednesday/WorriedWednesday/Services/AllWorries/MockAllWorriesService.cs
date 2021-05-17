@@ -19,9 +19,9 @@ namespace WorriedWednesday.Services.AllWorries
       Worries.Insert(0,worry);
       return Task.FromResult(true);
     }
-    public Task<ObservableCollection<Worry>> GetWorriesAsync()
+    public Task<List<Worry>> GetWorriesAsync()
     {
-      return Task.FromResult(new ObservableCollection<Worry>(Worries));
+      return Task.FromResult(new List<Worry>(Worries));
     }
   }
 }

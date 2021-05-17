@@ -17,7 +17,8 @@ namespace WorriedWednesday.PageModels
 
     string _text;
     DateTime _timestamp;
-    ObservableCollection<Worry> _worries;
+    //ObservableCollection<Worry> _worries;
+    List<Worry> _worries;
     ButtonModel _writeWorryButtonModel;
     INavigationService _navigationService;
     IAccountService _accountService;
@@ -43,7 +44,9 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _timestamp, value);
     }
 
-    public ObservableCollection<Worry> Worries
+
+    //public ObservableCollection<Worry> Worries
+    public List<Worry> Worries
     {
       get => _worries;
       set => SetProperty(ref _worries, value);
