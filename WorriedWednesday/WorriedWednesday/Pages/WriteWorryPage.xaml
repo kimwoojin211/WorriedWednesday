@@ -6,7 +6,7 @@
              >
   <ContentPage.Content>
     <StackLayout>
-      <Entry Text="{Binding Text}"
+      <Entry Text="{Binding Message, Mode=TwoWay}"
              VerticalOptions="FillAndExpand"/>
       <buttons:BindableButton BindingContext="{Binding SubmitButtonModel}"
                               HorizontalOptions="Center"

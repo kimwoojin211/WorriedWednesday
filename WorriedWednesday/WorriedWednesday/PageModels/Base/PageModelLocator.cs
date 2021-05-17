@@ -8,6 +8,7 @@ using WorriedWednesday.Services.Navigation;
 using WorriedWednesday.Pages;
 using Xamarin.Forms;
 using WorriedWednesday.Services.Account;
+using WorriedWednesday.Services.UserWorry;
 
 namespace WorriedWednesday.PageModels.Base
 {
@@ -33,7 +34,8 @@ namespace WorriedWednesday.PageModels.Base
 
       // Register services (services are registered as Singletons default)
       _container.Register<INavigationService, NavigationService>();
-      _container.Register<IAccountService,AccountService>();
+      _container.Register<IAccountService,MockAccountService>();
+      _container.Register<IUserWorryService,MockUserWorryService> ();
 
 
     }

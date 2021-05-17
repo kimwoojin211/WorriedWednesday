@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using WorriedWednesday.Services.Account;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(AccountService))]
+[assembly: Dependency(typeof(MockAccountService))]
 namespace WorriedWednesday.Droid.Services
 {
   public class AccountService : IAccountService

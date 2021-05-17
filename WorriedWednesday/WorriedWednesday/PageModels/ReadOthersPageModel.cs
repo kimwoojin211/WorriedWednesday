@@ -18,7 +18,7 @@ namespace WorriedWednesday.PageModels
     {
       _navigationService = navigationService;
       ReplyButtonModel = new ButtonModel("Reply", ReplyAction);
-      WriteWorryButtonModel = new ButtonModel("Share", WriteAction);
+      WriteWorryButtonModel = new ButtonModel("New Worry", WriteAction);
     }
 
 

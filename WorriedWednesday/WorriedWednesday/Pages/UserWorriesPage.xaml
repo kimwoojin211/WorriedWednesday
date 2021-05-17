@@ -2,22 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WorriedWednesday.Pages.UserWorriesPage"
+             xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons"
              Title="Your Worries">
-    <ContentPage.Content>
-      <StackLayout>
-      <Label Text="UNDER CONSTRUCTION"/>
-      <!--<ListView ItemsSource="{Binding Worries}">
+  <StackLayout>
+    <buttons:BindableButton BindingContext="{Binding WriteWorryButtonModel}"
+                              HorizontalOptions="Center"
+                              WidthRequest="150"
+                              VerticalOptions="End"/>
+    <ListView ItemsSource="{Binding Worries}">
           <ListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>
                 <StackLayout>
-                  <Label Text="{Binding Text}"/>
+                  <Label Text="{Binding Message}"/>
                   <Label Text="{Binding Timestamp}"/>
                 </StackLayout>
               </ViewCell>
             </DataTemplate>
           </ListView.ItemTemplate>
-        </ListView>-->
-      </StackLayout>
-    </ContentPage.Content>
+        </ListView>
+  </StackLayout>
 </ContentPage>

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WorriedWednesday.Models;
 
 namespace WorriedWednesday.Services.Account
 {
-  public class AccountService :IAccountService
+  public class MockAccountService :IAccountService
   {
     public Task<bool> LoginAsync(string email, string password)
     {
@@ -15,5 +16,9 @@ namespace WorriedWednesday.Services.Account
       }
       return Task.Delay(500).ContinueWith((Task) => true);
     }
+    public Task<List<Worry>> GetWorriesAsync()
+    {
+      return Task.FromResult(new List<Worry>());
+    } 
   }
 }

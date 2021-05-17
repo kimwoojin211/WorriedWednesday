@@ -56,7 +56,7 @@ namespace WorriedWednesday.PageModels
     //  }
     //}
 
-    private async void DoLoginAction()
+    async void DoLoginAction()
     {
       var loginAttempt = await _accountService.LoginAsync(Email, Password);
       if(loginAttempt)

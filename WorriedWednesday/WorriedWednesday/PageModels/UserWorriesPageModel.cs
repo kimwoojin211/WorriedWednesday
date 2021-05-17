@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.Models;
 using WorriedWednesday.PageModels.Base;
+using WorriedWednesday.Services.Account;
+using WorriedWednesday.Services.Navigation;
+using WorriedWednesday.Services.UserWorry;
+using WorriedWednesday.ViewModels.Buttons;
 
 namespace WorriedWednesday.PageModels
 {
@@ -14,9 +18,18 @@ namespace WorriedWednesday.PageModels
     string _text;
     DateTime _timestamp;
     ObservableCollection<Worry> _worries;
-    public UserWorriesPageModel()
+    ButtonModel _writeWorryButtonModel;
+    INavigationService _navigationService;
+    IAccountService _accountService;
+    IUserWorryService _userWorryService;
+    public UserWorriesPageModel(INavigationService navigationService, 
+                                IAccountService accountService, 
+                                IUserWorryService userWorryService)
     {
-      Worries = new ObservableCollection<Worry>();
+      _accountService = accountService;
+      _userWorryService = userWorryService;
+      _navigationService = navigationService;
+      WriteWorryButtonModel = new ButtonModel("New Worry", WriteAction);
     }
     public string Text
     {
@@ -35,9 +48,20 @@ namespace WorriedWednesday.PageModels
       get => _worries;
       set => SetProperty(ref _worries, value);
     }
-    public override Task InitializeAsync(object navigationData)
+    public ButtonModel WriteWorryButtonModel
     {
-      return base.InitializeAsync(navigationData);
+      get => _writeWorryButtonModel;
+      set => SetProperty(ref _writeWorryButtonModel, value);
+    }
+    private async void WriteAction()
+    {
+      await _navigationService.NavigateToAsync<WriteWorryPageModel>();
+      //Worries.Insert(0, new Worry { Text, Timestamp, Replies, UserId }
+    }
+    public override async Task InitializeAsync(object navigationData)
+    {
+      Worries = await _userWorryService.GetWorriesAsync();
+      await base.InitializeAsync(navigationData);
     }
 
   }
