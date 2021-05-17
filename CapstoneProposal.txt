@@ -1,8 +1,8 @@
-Name of Project: Worried Wednesdays (Alternate Name: Warm & Fuzzies)
+Name of Project: Worried Wednesdays (Alternate Name: Troubled Thursdays) (Alternate Alternate Name: Warm & Fuzzies)
 
 Project's Purpose or Goal (What will it do for users):
 
-Based off the concept of [Kind Words (lo fi chill beats to write to)](https://popcannibal.com/kindwords/), as well as a thing I do on my social network, I want to make a cross-mobile/web application for people to anonymously write their problems and concerns that other users can read and write back words of encouragement, also anonymously. The goal of the project is not just to encourage ~*~*positive*~*vibes*~*~, but to help perpetuate the idea that sharing one's worries to others will ease the burden of keeping them bottled within, and that there will always be someone out there will be willing to provide a safe space and listen. Kind Words currenlty only has a desktop version, and so I wanted to try my hand at making a mobile/web version.
+Based off the concept of [Kind Words (lo fi chill beats to write to)](https://popcannibal.com/kindwords/), as well as a thing I do on my social network, I want to make a cross-mobile/web application for people to anonymously write their problems and concerns that other users can read and write back words of encouragement, also anonymously. The goal of the project is not just to encourage ~*~*positive*~*vibes*~*~, but also to help perpetuate the idea that sharing one's worries and emotions to others is likely to ease the burden of keeping them bottled within, and that there will always be someone out there will be willing to provide a safe space and listen. Kind Words currently only has a desktop version, and so I wanted to try my hand at making a mobile/web version.
 
 List the absolute minimum features the project requires to meet this purpose or goal:
 

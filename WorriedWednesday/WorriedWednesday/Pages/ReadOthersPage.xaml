@@ -34,21 +34,26 @@
                                 VerticalOptions="End"
                               />
     </StackLayout>
+    
     <Label BindingContext="{Binding CurrentWorry}"
            Text="{Binding Message}"
            VerticalOptions="FillAndExpand"
            HorizontalOptions="FillAndExpand"
            Padding="50,100,50,100"/>
+    
+    <buttons:BindableButton BindingContext="{Binding ReplyButtonModel}"
+                                  WidthRequest="125"/>
+    
     <StackLayout BackgroundColor="{StaticResource Primary}"
 >
       <StackLayout Orientation="Horizontal"
                   HorizontalOptions="CenterAndExpand">
         <buttons:BindableButton BindingContext="{Binding PrevWorryButtonModel}"
                                   WidthRequest="125"/>
-      
-        <buttons:BindableButton BindingContext="{Binding ReplyButtonModel}"
+
+        <buttons:BindableButton BindingContext="{Binding RandomWorryButtonModel}"
                                   WidthRequest="125"/>
-      
+
         <buttons:BindableButton BindingContext="{Binding NextWorryButtonModel}"
                                   WidthRequest="125"/>
       </StackLayout>

@@ -12,10 +12,11 @@
 * _C#_
 
 
-## Setup/Installation Requirements
+## Setup/Installation Instructions
 
-TBD 
 Repository: https://github.com/kimwoojin211/WorriedWednesday
+<br>
+Setup/Installation Instructions TBD
 
 ## Bugs as of 5/7
 
@@ -24,13 +25,11 @@ Repository: https://github.com/kimwoojin211/WorriedWednesday
 
 For contact support, please email  <a href="mailto:kimwoojin211@gmail.com">Send Email</a>
 
-## Technologies Used
-
-
 
 ### License
-
+```
 MIT
-
+```
+```
 Copyright (c) 2021 
 ```
