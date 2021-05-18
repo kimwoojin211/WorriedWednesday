@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.PageModels.Base;
-using WorriedWednesday.Services.Navigation;
 using Xamarin.Forms;
 
-namespace WorriedWednesday.Navigation
+namespace WorriedWednesday.Services.Navigation
 {
   public class NavigationService : INavigationService
   {
@@ -18,10 +17,10 @@ namespace WorriedWednesday.Navigation
       }
       return Task.CompletedTask;
     }
-    public async Task NavigateToAsync<TPageModelBase>(object navigationData = null, bool setRoot = false)
-            where TPageModelBase : PageModelBase 
+    public async Task NavigateToAsync<TPageModel>(object navigationData = null, bool setRoot = false)
+            where TPageModel : PageModelBase 
     {
-      Page page = PageModelLocator.CreatePageFor(typeof(TPageModelBase));
+      Page page = PageModelLocator.CreatePageFor<TPageModel>();
       if (setRoot)
       {
         // if page is tabbedpage (a.k.a. dashboardpage), then current active page won't be wrapped as a NavigationPage

@@ -65,6 +65,7 @@ namespace WorriedWednesday.PageModels
       }
       else
       {
+        Console.WriteLine("LOL SORRY LOLOLOLOL " + Email + "     " + Password);
         //Display failure alert
       }
     }

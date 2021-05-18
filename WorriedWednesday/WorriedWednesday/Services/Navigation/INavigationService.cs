@@ -12,14 +12,14 @@ namespace WorriedWednesday.Services.Navigation
     /* <summary>
      * navigation method to push onto Navigation stack
      * </summary>
-     * <typeparam name="TPageModelBase"></typeparam>
+     * <typeparam name="TPageModel"></typeparam>
      * <param name="navigationData"></param>
      * <param name="setRoot"></param>
      * <returns></returns>
      */
-    Task NavigateToAsync<TPageModelBase>(object navigationData = null, bool setRoot = false)
-        where TPageModelBase : PageModelBase;
-      // where TPageModelBase : PageModelBase enforces that you only navigate forward in a pagemodelbase
+    Task NavigateToAsync<TPageModel>(object navigationData = null, bool setRoot = false)
+        where TPageModel : PageModelBase;
+      // where TPageModel : PageModelBase enforces that you only navigate forward in a pagemodelbase
 
     // <summary>
     // Navigation method to pop off of the Navigation Stack

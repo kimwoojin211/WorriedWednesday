@@ -46,7 +46,6 @@ namespace WorriedWednesday.Droid.Services
         .Document(FirebaseAuth.Instance.CurrentUser.Uid)
         .Get()
         .AddOnCompleteListener(new OnCompleteListener(tcs));
-      Console.WriteLine("                                  fuckfuckfuckfuckifuckfuck                          ~~~~~~~~~~~~~~~          3");
       return tcs.Task;
     }
 
