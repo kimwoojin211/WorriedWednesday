@@ -2,12 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
-using System.Text;
-using UIKit;
+using Firebase.Core;
 using WorriedWednesday.Models;
 using Firebase.Auth;
 using WorriedWednesday.Services.Account;
+using Xamarin.Forms;
 
 namespace WorriedWednesday.iOS.Services
 {
@@ -42,6 +41,24 @@ namespace WorriedWednesday.iOS.Services
     public Task<AuthenticatedUser> GetUserAsync()
     {
       var tcs = new TaskCompletionSource<AuthenticatedUser>();
+
+      Firebase.CloudFirestore.Firestore.SharedInstance
+        .GetCollection("users")
+        .GetDocument(Auth.DefaultInstance.CurrentUser.Uid)
+        .GetDocument((snapshot, error) =>
+        {
+          if (error != null)
+          {
+            // something went wrong
+            tcs.TrySetResult(default(AuthenticatedUser));
+            return;
+          }
+          tcs.TrySetResult(new AuthenticatedUser
+          {
+            Id = snapshot.Id
+            //Worries = ????
+          });
+        });
       return tcs.Task;
 
     }

@@ -8,6 +8,7 @@ using WorriedWednesday.Droid.Services;
 using WorriedWednesday.Models;
 using WorriedWednesday.Services.Account;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 [assembly: Dependency(typeof(AccountService))]
 namespace WorriedWednesday.Droid.Services
