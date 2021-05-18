@@ -38,6 +38,15 @@ namespace WorriedWednesday.iOS.Services
       tcs.SetResult(true);
     }
 
+    public Task<bool> RegisterAsync(string username, string email, string password)
+    {
+      throw new NotImplementedException();
+    }
+    public Task<bool> PasswordResetAsync(string email)
+    {
+      throw new NotImplementedException();
+    }
+
     public Task<AuthenticatedUser> GetUserAsync()
     {
       var tcs = new TaskCompletionSource<AuthenticatedUser>();
@@ -63,9 +72,5 @@ namespace WorriedWednesday.iOS.Services
 
     }
 
-    public Task<bool> RegisterAsync(string username, string email, string password)
-    {
-      throw new NotImplementedException();
-    }
   }
 }

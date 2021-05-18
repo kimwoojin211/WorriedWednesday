@@ -27,6 +27,12 @@ namespace WorriedWednesday.Services.Account
       }
       return Task.Delay(500).ContinueWith((Task) => true);
     }
+
+    public Task<bool> PasswordResetAsync(string email)
+    {
+      return Task.Delay(500).ContinueWith((Task) => true);
+    }
+
     public Task<AuthenticatedUser> GetUserAsync()
     {
       return Task.FromResult(new AuthenticatedUser());

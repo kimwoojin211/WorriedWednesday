@@ -13,7 +13,7 @@
   </ContentPage.Resources>-->
 
   <Grid Margin="16,0">
-    <StackLayout x:Name="loginStackLayout"
+    <StackLayout x:Name="loginStackLayout" 
              VerticalOptions="Center"
              IsVisible="True">
       <Entry Placeholder="Email"
@@ -29,6 +29,14 @@
         <Label Text="Register">
           <Label.GestureRecognizers>
             <TapGestureRecognizer Tapped="RegisterLabel_Tapped"/>
+          </Label.GestureRecognizers>
+        </Label>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Forgot your password?"/>
+        <Label Text="Click here">
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ForgotPasswordLabel_Tapped"/>
           </Label.GestureRecognizers>
         </Label>
       </StackLayout>
@@ -59,5 +67,27 @@
         </Label>
       </StackLayout>
     </StackLayout>
+
+    
+    <!--forgotpassword stack. need to figure out way to toggle back to login form once button is clicked-->
+    <StackLayout x:Name="ForgotPasswordStackLayout"
+             VerticalOptions="Center"
+             IsVisible="false">
+      <Label Text="Enter the e-mail address associated with your account"/>
+      <Label Text="If the entered e-mail is registered, you will receive an e-mail shortly with instructions on resetting your password."/>
+      <Entry Placeholder="Email"
+           Keyboard="Email"
+           Text="{Binding Email, Mode=TwoWay}"/>
+      <Button Text="Help me pls :("
+           Command="{Binding PasswordResetCommand}"/>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Click here to go back to the login page">
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="LoginLabel_Tapped"/>
+          </Label.GestureRecognizers>
+        </Label>
+      </StackLayout>
+    </StackLayout>
+    
   </Grid>
 </ContentPage>
