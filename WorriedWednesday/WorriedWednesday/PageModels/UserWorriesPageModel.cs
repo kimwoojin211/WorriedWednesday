@@ -9,6 +9,7 @@ using WorriedWednesday.Services.Account;
 using WorriedWednesday.Services.Navigation;
 using WorriedWednesday.Services.AllWorries;
 using WorriedWednesday.ViewModels.Buttons;
+using System.Runtime.CompilerServices;
 
 namespace WorriedWednesday.PageModels
 {
@@ -18,6 +19,7 @@ namespace WorriedWednesday.PageModels
     string _text;
     DateTime _timestamp;
     ObservableCollection<Worry> _worries;
+    Worry _selectedWorry;
     //List<Worry> _worries;
     ButtonModel _writeWorryButtonModel;
     INavigationService _navigationService;
@@ -44,31 +46,53 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _timestamp, value);
     }
 
-    //public ObservableCollection<Worry> Worries
+    //public List<Worry> Worries
     public ObservableCollection<Worry> Worries
     {
       get => _worries;
       set => SetProperty(ref _worries, value);
     }
+
+    public Worry SelectedWorry
+    {
+      get => _selectedWorry;
+      set
+      {
+        SetProperty(ref _selectedWorry, value);
+        if(_selectedWorry != null)
+        { 
+          Task.Run(() => SelectedAction());
+        }
+      }
+    }
+
     public ButtonModel WriteWorryButtonModel
     {
       get => _writeWorryButtonModel;
       set => SetProperty(ref _writeWorryButtonModel, value);
     }
+
+    private async void SelectedAction()
+    {
+      await _navigationService.NavigateToAsync<WorryDetailsPageModel>(SelectedWorry);
+      //Worries.Insert(0, new Worry { Text, Timestamp, Replies, UserId }
+    }
+
     private async void WriteAction()
     {
       await _navigationService.NavigateToAsync<WriteMessagePageModel>();
       //Worries.Insert(0, new Worry { Text, Timestamp, Replies, UserId }
     }
+
+
     public override async Task InitializeAsync(object navigationData)
     {
       //var user = await _accountService.GetUserAsync();
       //Worries = user.Worries;
-
+      SelectedWorry = null;
       List<Worry> worryList =  await _allWorriesService.GetWorriesAsync();
       Worries = new ObservableCollection<Worry>(worryList);
       await base.InitializeAsync(navigationData);
     }
-
   }
 }

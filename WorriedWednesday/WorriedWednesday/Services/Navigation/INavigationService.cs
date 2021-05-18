@@ -19,7 +19,7 @@ namespace WorriedWednesday.Services.Navigation
 
     Task NavigateToAsync<TPageModel>(object navigationData = null, bool setRoot = false)
         where TPageModel : PageModelBase;
-      
+
     // where TPageModel : PageModelBase enforces that you only navigate forward in a pagemodelbase
 
 
@@ -27,7 +27,6 @@ namespace WorriedWednesday.Services.Navigation
     /// Navigation method to pop off of the Navigation Stack
     /// </summary>
     /// <returns></returns>
-
     Task GoBackAsync();
   }
 }

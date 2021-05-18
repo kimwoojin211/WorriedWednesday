@@ -8,7 +8,7 @@ namespace WorriedWednesday.Services.Account
 {
   public class MockAccountService :IAccountService
   {
-
+    public AuthenticatedUser user = new AuthenticatedUser();
 
     public Task<bool> LoginAsync(string email, string password)
     {
@@ -16,6 +16,8 @@ namespace WorriedWednesday.Services.Account
       {
         return Task.FromResult(false);
       }
+
+      user.Id = email;
       return Task.Delay(500).ContinueWith((Task) => true);
     }
 
@@ -35,7 +37,7 @@ namespace WorriedWednesday.Services.Account
 
     public Task<AuthenticatedUser> GetUserAsync()
     {
-      return Task.FromResult(new AuthenticatedUser());
+      return Task.FromResult(user);
     }
     //public Task<bool> LogWorryAsync(Worry worry)
     //{

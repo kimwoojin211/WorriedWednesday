@@ -16,7 +16,7 @@ namespace WorriedWednesday.PageModels
 {
   public class ReadOthersPageModel : PageModelBase
   {
-    string _username, _message;
+    string _userId, _name, _message;
     ButtonModel _replyButtonModel,
               _writeWorryButtonModel,
               _nextWorryButtonModel,
@@ -51,16 +51,29 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _message, value);
     }
 
-    public string Username
+    public string UserId
     {
-      get => _username;
-      set => SetProperty(ref _username, value);
+      get => _userId;
+      set => SetProperty(ref _userId, value);
+    }
+
+
+    public string Name
+    {
+      get => _name;
+      set => SetProperty(ref _name, value);
     }
 
     public Worry CurrentWorry
     {
       get => _currentWorry;
       set => SetProperty(ref _currentWorry, value);
+    }
+
+    public string AuthUser
+    {
+      get => _message;
+      set => SetProperty(ref _message, value);
     }
 
     //button models
@@ -157,6 +170,7 @@ namespace WorriedWednesday.PageModels
       Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          3");
       if (user != null)
       {
+        UserId = user.Id;
         Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         4");
       }
 

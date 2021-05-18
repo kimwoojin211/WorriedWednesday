@@ -9,14 +9,7 @@ namespace WorriedWednesday.Services.Navigation
 {
   public class NavigationService : INavigationService
   {
-    public Task GoBackAsync()
-    {
-      if (App.Current.MainPage is NavigationPage navPage)
-      {
-        return navPage.PopAsync();
-      }
-      return Task.CompletedTask;
-    }
+
     public async Task NavigateToAsync<TPageModel>(object navigationData = null, bool setRoot = false)
             where TPageModel : PageModelBase 
     {
@@ -61,6 +54,14 @@ namespace WorriedWednesday.Services.Navigation
       {
         await pmBase.InitializeAsync(navigationData);
       }
+    }
+    public Task GoBackAsync()
+    {
+      if (App.Current.MainPage is NavigationPage navPage)
+      {
+        return navPage.PopAsync();
+      }
+      return Task.CompletedTask;
     }
   }
 }

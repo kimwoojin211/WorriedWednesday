@@ -34,13 +34,20 @@
                                 VerticalOptions="End"
                               />
     </StackLayout>
-    
-    <Label BindingContext="{Binding CurrentWorry}"
-           Text="{Binding Message}"
-           VerticalOptions="FillAndExpand"
+    <Label Text="{Binding UserId, StringFormat='Hello {0}!'}"
            HorizontalOptions="FillAndExpand"
-           Padding="50,100,50,100"/>
-    
+           VerticalOptions="End"/>
+    <StackLayout  BindingContext="{Binding CurrentWorry}">
+      <Label 
+             Text="{Binding Message}"
+             VerticalOptions="FillAndExpand"
+             HorizontalOptions="Center"/>
+             <!--Padding="50,100,50,100"/>-->
+      <Label 
+           Text="{Binding AuthorId}"
+           VerticalOptions="FillAndExpand"
+        />
+    </StackLayout>
     <buttons:BindableButton BindingContext="{Binding ReplyButtonModel}"
                                   WidthRequest="125"/>
     

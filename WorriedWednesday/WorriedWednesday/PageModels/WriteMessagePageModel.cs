@@ -8,6 +8,7 @@ using WorriedWednesday.Services.Navigation;
 using WorriedWednesday.Services.AllWorries;
 using WorriedWednesday.ViewModels.Buttons;
 using System.Threading.Tasks;
+using WorriedWednesday.Services.Account;
 
 namespace WorriedWednesday
 {
@@ -18,9 +19,12 @@ namespace WorriedWednesday
     ButtonModel _submitButtonModel;
     INavigationService _navigationService;
     IAllWorriesService _allWorriesService;
-    public WriteMessagePageModel(INavigationService navigationService,
+    IAccountService _accountService;
+    public WriteMessagePageModel(IAccountService accountService, 
+                                INavigationService navigationService,
                                 IAllWorriesService allWorriesService)
     {
+      _accountService = accountService;
       _allWorriesService = allWorriesService;
       _navigationService = navigationService;
       SubmitButtonModel = new ButtonModel("Submit", SubmitAction);
@@ -34,11 +38,11 @@ namespace WorriedWednesday
     }
 
     // manually enter id so i know which post belongs to which account until i can get accountservice working
-    public string Id
-    {
-      get => _id;
-      set => SetProperty(ref _id, value);
-    }
+    //public string Id
+    //{
+    //  get => _id;
+    //  set => SetProperty(ref _id, value);
+    //}
 
     public Worry Worry
     {
@@ -59,7 +63,7 @@ namespace WorriedWednesday
         var item = new Reply
         {
           Message = Message,
-          userId = Id
+          AuthorId = _id
         };
         Worry.Replies.Add(item);
         await _allWorriesService.LogWorryAsync(Worry);
@@ -71,7 +75,7 @@ namespace WorriedWednesday
           Message = Message,
           Timestamp = DateTime.Now,
           Replies = new List<Reply>(),
-          userId = Id
+          AuthorId = _id
         };
         await _allWorriesService.LogWorryAsync(item);
       }
@@ -81,6 +85,11 @@ namespace WorriedWednesday
 
     public override async Task InitializeAsync(object navigationData)
     {
+      var user = await _accountService.GetUserAsync();
+      if(user != null)
+      {
+        _id = user.Id;
+      }
       if(navigationData is Worry worry)
       {
         Worry = worry;

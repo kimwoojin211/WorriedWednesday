@@ -30,7 +30,7 @@ namespace WorriedWednesday.PageModels.Base
       Register<WriteWorryPageModel, WriteWorryPage>();
       Register<WriteMessagePageModel, WriteMessagePage>();
       Register<UserWorriesPageModel, UserWorriesPage>();
-      //Register<ReadRepliesPageModel, ReadRepliesPage>();
+      Register<WorryDetailsPageModel, WorryDetailsPage>();
 
 
       // Register services (services are registered as Singletons default)

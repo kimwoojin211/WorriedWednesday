@@ -48,7 +48,7 @@ namespace WorriedWednesday
         Message = Message,
         Timestamp = DateTime.Now,
         Replies = new List<Reply>(),
-        userId = Id
+        AuthorId = Id
       };
       await _userWorryService.LogWorryAsync(item);
       await _navigationService.NavigateToAsync<DashboardPageModel>();
