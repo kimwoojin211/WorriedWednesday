@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using TinyIoC;
 using WorriedWednesday.Navigation;
-using WorriedWednesday.PageModels;
 using WorriedWednesday.Services.Navigation;
 using WorriedWednesday.Pages;
-using Xamarin.Forms;
 using WorriedWednesday.Services.Account;
 using WorriedWednesday.Services.AllWorries;
+using WorriedWednesday.Services;
+using WorriedWednesday.Models;
+using Xamarin.Forms;
 
 namespace WorriedWednesday.PageModels.Base
 {
@@ -26,23 +27,19 @@ namespace WorriedWednesday.PageModels.Base
       Register<DashboardPageModel, DashboardPage>();
       Register<LoginPageModel, LoginPage>();
       Register<ReadOthersPageModel, ReadOthersPage>();
-      Register<UserWorriesPageModel, UserWorriesPage>();
       Register<SettingsPageModel, SettingsPage>();
       Register<WriteWorryPageModel, WriteWorryPage>();
+      Register<UserWorriesPageModel, UserWorriesPage>();
       //Register<ReadRepliesPageModel, ReadRepliesPage>();
 
 
       // Register services (services are registered as Singletons default)
       _container.Register<INavigationService, NavigationService>();
-      _container.Register<IAccountService,MockAccountService>();
-      _container.Register<IAllWorriesService,MockAllWorriesService> ();
-
-
-    }
-
-    public static T Resolve<T>() where T : class
-    {
-      return _container.Resolve<T>();
+      _container.Register<IAccountService, MockAccountService>();
+      _container.Register<IAllWorriesService, MockAllWorriesService>();
+      //_container.Register<IAccountService>(DependencyService.Get<IAccountService>());
+      //_container.Register<IAllWorriesService>(DependencyService.Get<IAllWorriesService>());
+      _container.Register(DependencyService.Get<IDatabase<TestData>>());
     }
 
     public static Page CreatePageFor(Type pageModelType)
@@ -58,6 +55,40 @@ namespace WorriedWednesday.PageModels.Base
     {
       _viewLookup.Add(typeof(TPageModel), typeof(TPage));
       _container.Register<TPageModel>();
+    }
+    public static T Resolve<T>() where T : class 
+    {
+      try
+      {
+          return _container.Resolve<T>();
+      }
+      catch (TinyIoCResolutionException e)
+      {
+        var message = e.Message;
+        System.Diagnostics.Debug.WriteLine(e.Message);
+
+        while (e.InnerException is TinyIoCResolutionException ex)
+        {
+              message = ex.Message;
+              System.Diagnostics.Debug.WriteLine("\t" + ex.Message);
+              e = ex;
+        }
+        #if DEBUG
+        App.Current.MainPage.DisplayAlert("Resolution Error", message, "Ok");
+        #endif
+        }
+            return default(T);
+        }
+
+
+    public static Page CreatePageFor<TPageModelType>() where TPageModelType : PageModelBase
+    {
+      Type pageModelType = typeof(TPageModelType);
+      var pageType = _viewLookup[pageModelType];
+      var page = (Page)Activator.CreateInstance(pageType);
+      var pageModel = Resolve<TPageModelType>();
+      page.BindingContext = pageModel;
+      return page;
     }
   }
 }

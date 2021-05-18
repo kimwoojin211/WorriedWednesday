@@ -8,6 +8,8 @@ namespace WorriedWednesday.Services.Account
 {
   public class MockAccountService :IAccountService
   {
+
+
     public Task<bool> LoginAsync(string email, string password)
     {
       if(string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
@@ -15,6 +17,10 @@ namespace WorriedWednesday.Services.Account
         return Task.FromResult(false);
       }
       return Task.Delay(500).ContinueWith((Task) => true);
+    }
+    public Task<AuthenticatedUser> GetUserAsync()
+    {
+      return Task.FromResult(new AuthenticatedUser());
     }
     //public Task<bool> LogWorryAsync(Worry worry)
     //{

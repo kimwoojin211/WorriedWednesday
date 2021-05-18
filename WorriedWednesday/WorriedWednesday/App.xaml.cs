@@ -18,12 +18,14 @@ namespace WorriedWednesday
     Task InitNavigation()
     {
       var navService = PageModelLocator.Resolve<INavigationService>();
-      return navService.NavigateToAsync<DashboardPageModel>();
+      return navService.NavigateToAsync<LoginPageModel>();
     }
 
     protected override async void OnStart()
     {
+      base.OnStart();
       await InitNavigation();
+      base.OnResume();
     }
 
     protected override void OnSleep()

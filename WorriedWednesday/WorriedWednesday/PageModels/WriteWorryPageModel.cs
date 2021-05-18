@@ -47,7 +47,7 @@ namespace WorriedWednesday
       {
         Message = Message,
         Timestamp = DateTime.Now,
-        Replies = new List<string>(),
+        Replies = new List<Reply>(),
         userId = Id
       };
       await _userWorryService.LogWorryAsync(item);

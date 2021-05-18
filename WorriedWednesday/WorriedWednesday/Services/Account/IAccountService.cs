@@ -9,6 +9,6 @@ namespace WorriedWednesday.Services.Account
   public interface IAccountService
   {
     Task<bool> LoginAsync(string email, string password);
-    //Task<List<Worry>> GetWorriesAsync();
-    }
+    Task<AuthenticatedUser> GetUserAsync();
+  }
 }

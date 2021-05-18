@@ -44,7 +44,6 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _timestamp, value);
     }
 
-
     //public ObservableCollection<Worry> Worries
     public List<Worry> Worries
     {
@@ -63,7 +62,12 @@ namespace WorriedWednesday.PageModels
     }
     public override async Task InitializeAsync(object navigationData)
     {
-      Worries = await _allWorriesService.GetWorriesAsync();
+      Console.WriteLine("                                  sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee~~~~~~~~~~~~~~~          1");
+      var user = await _accountService.GetUserAsync();
+      Console.WriteLine("                                  sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee~~~~~~~~~~~~~~~          2");
+      Worries = user.Worries;
+
+      Console.WriteLine("                                  sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee~~~~~~~~~~~~~~~          3");
       await base.InitializeAsync(navigationData);
     }
 

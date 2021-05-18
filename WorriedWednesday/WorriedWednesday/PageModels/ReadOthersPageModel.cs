@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.Models;
 using WorriedWednesday.PageModels.Base;
+using WorriedWednesday.Services;
+using WorriedWednesday.Services.Account;
 using WorriedWednesday.Services.AllWorries;
 using WorriedWednesday.Services.Navigation;
 using WorriedWednesday.ViewModels.Buttons;
@@ -15,17 +17,24 @@ namespace WorriedWednesday.PageModels
   public class ReadOthersPageModel : PageModelBase
   {
     string _username, _message;
-    ButtonModel _replyButtonModel, _writeWorryButtonModel, _nextWorryButtonModel, _prevWorryButtonModel, _randomWorryButtonModel;
+    ButtonModel _replyButtonModel,
+              _writeWorryButtonModel,
+              _nextWorryButtonModel,
+              _prevWorryButtonModel,
+              _randomWorryButtonModel;
     List<Worry> _othersWorries;
     Worry _currentWorry;
     INavigationService _navigationService;
     IAllWorriesService _allWorriesService;
     Random _randomGenerator;
+    IAccountService _accountService;
 
     public ReadOthersPageModel(INavigationService navigationService,
-                                IAllWorriesService allWorriesService)
+                                IAllWorriesService allWorriesService,
+                                IAccountService accountService)
     {
       _navigationService = navigationService;
+      _accountService = accountService;
       _allWorriesService = allWorriesService;
       _randomGenerator = new Random();
       ReplyButtonModel = new ButtonModel("Reply", ReplyAction);
@@ -131,7 +140,21 @@ namespace WorriedWednesday.PageModels
 
     public override async Task InitializeAsync(object navigationData)
     {
+
+      Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          1");
+      var items = await PageModelLocator.Resolve<IDatabase<TestData>>().GetAll();
+      if(items != null)
+      {
+
+      }
       _othersWorries = await _allWorriesService.GetWorriesAsync();
+      Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
+      var user = await _accountService.GetUserAsync();
+      Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          3");
+      if (user != null)
+      {
+        Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         4");
+      }
 
       if(!_othersWorries.Any())
       {
@@ -142,11 +165,13 @@ namespace WorriedWednesday.PageModels
         PrevWorryButtonModel.IsEnabled = false;
         NextWorryButtonModel.IsEnabled = false;
         RandomWorryButtonModel.IsEnabled = false;
+        ReplyButtonModel.IsEnabled = false;
       }
       else
       {
         CurrentWorry = _othersWorries[0];
-        if(_othersWorries.Count == 1)
+        ReplyButtonModel.IsEnabled = true ;
+        if (_othersWorries.Count == 1)
         {
           PrevWorryButtonModel.IsEnabled = false;
           NextWorryButtonModel.IsEnabled = false;

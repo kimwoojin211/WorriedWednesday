@@ -1,15 +1,7 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using System;
 using Java.Text;
-using System;
 using Java.Util;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WorriedWednesday.Droid.Extensions
 {

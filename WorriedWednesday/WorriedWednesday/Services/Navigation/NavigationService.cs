@@ -12,7 +12,11 @@ namespace WorriedWednesday.Navigation
   {
     public Task GoBackAsync()
     {
-      return App.Current.MainPage.Navigation.PopAsync();
+      if (App.Current.MainPage is NavigationPage navPage)
+      {
+        return navPage.PopAsync();
+      }
+      return Task.CompletedTask;
     }
     public async Task NavigateToAsync<TPageModelBase>(object navigationData = null, bool setRoot = false)
             where TPageModelBase : PageModelBase 
@@ -40,6 +44,13 @@ namespace WorriedWednesday.Navigation
         else if(App.Current.MainPage is NavigationPage navPage)
         {
           await navPage.PushAsync(page);
+        }
+        else if (App.Current.MainPage is TabbedPage tabbedPage)
+        {
+          if (tabbedPage.CurrentPage is NavigationPage nPage)
+          {
+            await nPage.PushAsync(page);
+          }
         }
         else
         {

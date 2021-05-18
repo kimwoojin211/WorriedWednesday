@@ -1,19 +1,15 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Firebase.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Firebase;
+using Firebase.Auth;
+using Firebase.Firestore;
+using WorriedWednesday.Droid.ServiceListeners;
+using WorriedWednesday.Droid.Services;
+using WorriedWednesday.Models;
 using WorriedWednesday.Services.Account;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(MockAccountService))]
+[assembly: Dependency(typeof(AccountService))]
 namespace WorriedWednesday.Droid.Services
 {
   public class AccountService : IAccountService
@@ -38,5 +34,22 @@ namespace WorriedWednesday.Droid.Services
       }
       tcs.SetResult(true);
     }
+    public Task<AuthenticatedUser> GetUserAsync()
+    {
+      var tcs = new TaskCompletionSource<AuthenticatedUser>();
+      Console.WriteLine("              @#$%$#@#$%^(*()(*&*()*&            yes it's getting the currentuserid                (*&*(*&(*&*&*(*&*(*&REREWR%^");
+
+      //firebasefirestore.instance keeps breaking :(
+
+      FirebaseFirestore.Instance
+        .Collection("users")
+        .Document(FirebaseAuth.Instance.CurrentUser.Uid)
+        .Get()
+        .AddOnCompleteListener(new OnCompleteListener(tcs));
+      Console.WriteLine("                                  fuckfuckfuckfuckifuckfuck                          ~~~~~~~~~~~~~~~          3");
+      return tcs.Task;
+    }
+
+
   }
 }
