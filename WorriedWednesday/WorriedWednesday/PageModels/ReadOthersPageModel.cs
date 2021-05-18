@@ -142,7 +142,7 @@ namespace WorriedWednesday.PageModels
     {
 
       Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          1");
-      var items = await PageModelLocator.Resolve<IDatabase<TestData>>().GetAll();
+      var items = await PageModelLocator.Resolve<IRepository<TestData>>().GetAll();
       if (items != null)
       {
 

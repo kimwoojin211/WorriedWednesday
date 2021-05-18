@@ -8,10 +8,10 @@ using WorriedWednesday.Droid.Extensions;
 
 namespace WorriedWednesday.Droid.Services
 {
-  public abstract class BaseDatabase<T> : IDatabase<T> where T : IIdentifiable
+  public abstract class BaseRepository<T> : IRepository<T> where T : IIdentifiable
   {
     protected abstract string DocumentPath { get; }
-    public BaseDatabase()
+    public BaseRepository()
     {
     }
     public Task<T> Get(string id)

@@ -71,6 +71,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\BaseRepository.cs" />
+    <Compile Include="Services\TestDataRepository.cs" />
     <None Include="Entitlements.plist" />
     <BundleResource Include="GoogleService-Info.plist" />
     <None Include="Info.plist" />

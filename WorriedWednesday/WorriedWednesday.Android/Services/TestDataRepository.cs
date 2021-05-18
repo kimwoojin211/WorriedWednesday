@@ -4,10 +4,10 @@ using WorriedWednesday.Droid.Services;
 using WorriedWednesday.Models;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(TestDataDatabase))]
+[assembly: Dependency(typeof(TestDataRepository))]
 namespace WorriedWednesday.Droid.Services
 {
-  public class TestDataDatabase : BaseDatabase<TestData>
+  public class TestDataRepository : BaseRepository<TestData>
   {
     protected override string DocumentPath =>
       "users/"

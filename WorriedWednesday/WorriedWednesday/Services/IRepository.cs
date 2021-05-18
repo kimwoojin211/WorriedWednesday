@@ -9,7 +9,7 @@ namespace WorriedWednesday.Services
   {
     string Id { get; set; }
   }
-  public interface IDatabase<T> where T : IIdentifiable
+  public interface IRepository<T> where T : IIdentifiable
   {
     Task<T> Get(string id);
     Task<IList<T>> GetAll();

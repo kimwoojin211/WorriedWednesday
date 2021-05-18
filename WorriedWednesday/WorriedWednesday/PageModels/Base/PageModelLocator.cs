@@ -38,7 +38,7 @@ namespace WorriedWednesday.PageModels.Base
       //_container.Register<IAllWorriesService, MockAllWorriesService>();
       _container.Register<IAccountService>(DependencyService.Get<IAccountService>());
       _container.Register<IAllWorriesService>(DependencyService.Get<IAllWorriesService>());
-      _container.Register(DependencyService.Get<IDatabase<TestData>>());
+      _container.Register(DependencyService.Get<IRepository<TestData>>());
     }
 
     /// <summary>
