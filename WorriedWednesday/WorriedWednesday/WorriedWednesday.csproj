@@ -28,6 +28,9 @@
     <Compile Update="Pages\UserWorriesPage.xaml.cs">
       <DependentUpon>UserWorriesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\WriteMessagePage.xaml.cs">
+      <DependentUpon>WriteMessagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\WriteWorryPage.xaml.cs">
       <DependentUpon>WriteWorryPage.xaml</DependentUpon>
     </Compile>

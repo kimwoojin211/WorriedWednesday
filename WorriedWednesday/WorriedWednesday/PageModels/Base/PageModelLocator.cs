@@ -28,15 +28,16 @@ namespace WorriedWednesday.PageModels.Base
       Register<ReadOthersPageModel, ReadOthersPage>();
       Register<SettingsPageModel, SettingsPage>();
       Register<WriteWorryPageModel, WriteWorryPage>();
+      Register<WriteMessagePageModel, WriteMessagePage>();
       Register<UserWorriesPageModel, UserWorriesPage>();
       //Register<ReadRepliesPageModel, ReadRepliesPage>();
 
 
       // Register services (services are registered as Singletons default)
       _container.Register<INavigationService, NavigationService>();
-      //_container.Register<IAccountService, MockAccountService>();
+      _container.Register<IAccountService, MockAccountService>();
       _container.Register<IAllWorriesService, MockAllWorriesService>();
-      _container.Register<IAccountService>(DependencyService.Get<IAccountService>());
+      //_container.Register<IAccountService>(DependencyService.Get<IAccountService>());
       //_container.Register<IAllWorriesService>(DependencyService.Get<IAllWorriesService>());
       _container.Register(DependencyService.Get<IRepository<TestData>>());
     }

@@ -17,8 +17,8 @@ namespace WorriedWednesday.PageModels
 
     string _text;
     DateTime _timestamp;
-    //ObservableCollection<Worry> _worries;
-    List<Worry> _worries;
+    ObservableCollection<Worry> _worries;
+    //List<Worry> _worries;
     ButtonModel _writeWorryButtonModel;
     INavigationService _navigationService;
     IAccountService _accountService;
@@ -45,7 +45,7 @@ namespace WorriedWednesday.PageModels
     }
 
     //public ObservableCollection<Worry> Worries
-    public List<Worry> Worries
+    public ObservableCollection<Worry> Worries
     {
       get => _worries;
       set => SetProperty(ref _worries, value);
@@ -57,17 +57,16 @@ namespace WorriedWednesday.PageModels
     }
     private async void WriteAction()
     {
-      await _navigationService.NavigateToAsync<WriteWorryPageModel>();
+      await _navigationService.NavigateToAsync<WriteMessagePageModel>();
       //Worries.Insert(0, new Worry { Text, Timestamp, Replies, UserId }
     }
     public override async Task InitializeAsync(object navigationData)
     {
-      Console.WriteLine("                                  sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee~~~~~~~~~~~~~~~          1");
-      var user = await _accountService.GetUserAsync();
-      Console.WriteLine("                                  sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee~~~~~~~~~~~~~~~          2");
-      Worries = user.Worries;
+      //var user = await _accountService.GetUserAsync();
+      //Worries = user.Worries;
 
-      Console.WriteLine("                                  sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee~~~~~~~~~~~~~~~          3");
+      List<Worry> worryList =  await _allWorriesService.GetWorriesAsync();
+      Worries = new ObservableCollection<Worry>(worryList);
       await base.InitializeAsync(navigationData);
     }
 

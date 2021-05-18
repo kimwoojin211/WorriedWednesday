@@ -14,9 +14,17 @@ namespace WorriedWednesday.Services.AllWorries
     {
       Worries = new List<Worry>();
     }
-    public Task<bool> LogWorryAsync(Worry worry)
+    public Task<bool> LogWorryAsync(Worry worryInput)
     {
-      Worries.Insert(0,worry);
+      int searchIndex = Worries.FindIndex(worry => worry.Equals(worryInput));
+      if (searchIndex == -1)
+      {
+        Worries.Insert(0,worryInput);
+      }
+      else
+      {
+        Worries[searchIndex] = worryInput;
+      }
       return Task.FromResult(true);
     }
     public Task<List<Worry>> GetWorriesAsync()

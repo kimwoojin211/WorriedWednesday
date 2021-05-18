@@ -26,8 +26,8 @@ namespace WorriedWednesday.PageModels
     Worry _currentWorry;
     INavigationService _navigationService;
     IAllWorriesService _allWorriesService;
-    Random _randomGenerator;
     IAccountService _accountService;
+    Random _randomGenerator;
 
     public ReadOthersPageModel(INavigationService navigationService,
                                 IAllWorriesService allWorriesService,
@@ -44,6 +44,7 @@ namespace WorriedWednesday.PageModels
       RandomWorryButtonModel = new ButtonModel("Random Worry", RandomWorryAction);
     }
 
+    //public properties
     public string Message
     {
       get => _message;
@@ -61,6 +62,8 @@ namespace WorriedWednesday.PageModels
       get => _currentWorry;
       set => SetProperty(ref _currentWorry, value);
     }
+
+    //button models
 
     public ButtonModel ReplyButtonModel
     {
@@ -91,16 +94,17 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _randomWorryButtonModel, value);
     }
 
-    private void ReplyAction()
-    {
-      //navigate to write reply page
-      //or just make it so that a text input pop up comes up
-      //or something
-    }
+    //actions
     private async void WriteAction()
     {
-      await _navigationService.NavigateToAsync<WriteWorryPageModel>();
+      await _navigationService.NavigateToAsync<WriteMessagePageModel>();
     }
+
+    private async void ReplyAction()
+    {
+      await _navigationService.NavigateToAsync<WriteMessagePageModel>(CurrentWorry);
+    }
+
     private void PrevWorryAction()
     {
       int index = _othersWorries.FindIndex(worry => worry.Equals(CurrentWorry));
