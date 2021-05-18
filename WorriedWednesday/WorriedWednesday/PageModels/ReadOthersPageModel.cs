@@ -142,11 +142,11 @@ namespace WorriedWednesday.PageModels
     {
 
       Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          1");
-      var items = await PageModelLocator.Resolve<IRepository<TestData>>().GetAll();
-      if (items != null)
-      {
+      //var items = await PageModelLocator.Resolve<IRepository<TestData>>().GetAll();
+      //if (items != null)
+      //{
 
-      }
+      //}
       _othersWorries = await _allWorriesService.GetWorriesAsync();
       Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
       var user = await _accountService.GetUserAsync();

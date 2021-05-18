@@ -10,5 +10,6 @@ namespace WorriedWednesday.Services.Account
   {
     Task<bool> LoginAsync(string email, string password);
     Task<AuthenticatedUser> GetUserAsync();
+    Task<bool> RegisterAsync(string name, string email, string password);
   }
 }

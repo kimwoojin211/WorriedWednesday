@@ -37,7 +37,7 @@
     <StackLayout x:Name="registerStackLayout"
              VerticalOptions="Center"
              IsVisible="False">
-      <Entry Placeholder="Name"
+      <Entry Placeholder="Display Name"
            Text="{Binding Name, Mode=TwoWay}"/>
       <Entry Placeholder="Email"
            Keyboard="Email"
@@ -48,8 +48,8 @@
       <Entry Placeholder="Confirm password"
            IsPassword="True"
             Text="{Binding ConfirmPassword, Mode=TwoWay}"/>
-      <!--<Button Text="Register"
-        Command="{Binding RegisterCommand}"/>-->
+      <Button Text="Register"
+        Command="{Binding RegisterCommand}"/>
       <StackLayout Orientation="Horizontal">
         <Label Text="Already have an account?"/>
         <Label Text="Login">

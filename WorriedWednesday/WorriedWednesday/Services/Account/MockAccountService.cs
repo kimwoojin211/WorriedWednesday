@@ -18,6 +18,15 @@ namespace WorriedWednesday.Services.Account
       }
       return Task.Delay(500).ContinueWith((Task) => true);
     }
+
+    public Task<bool> RegisterAsync(string username, string email, string password)
+    {
+      if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+      {
+        return Task.FromResult(false);
+      }
+      return Task.Delay(500).ContinueWith((Task) => true);
+    }
     public Task<AuthenticatedUser> GetUserAsync()
     {
       return Task.FromResult(new AuthenticatedUser());

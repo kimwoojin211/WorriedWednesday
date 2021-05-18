@@ -38,18 +38,24 @@ namespace WorriedWednesday.Droid.Services
     public Task<AuthenticatedUser> GetUserAsync()
     {
       var tcs = new TaskCompletionSource<AuthenticatedUser>();
-      Console.WriteLine("              @#$%$#@#$%^(*()(*&*()*&            yes it's getting the currentuserid                (*&*(*&(*&*&*(*&*(*&REREWR%^");
+      //Console.WriteLine("              @#$%$#@#$%^(*()(*&*()*&            yes it's getting the currentuserid                (*&*(*&(*&*&*(*&*(*&REREWR%^");
 
-      //firebasefirestore.instance keeps breaking :(
+      ////firebasefirestore.instance keeps breaking :(
 
-      FirebaseFirestore.Instance
-        .Collection("users")
-        .Document(FirebaseAuth.Instance.CurrentUser.Uid)
-        .Get()
-        .AddOnCompleteListener(new OnCompleteListener(tcs));
+      //FirebaseFirestore.Instance
+      //  .Collection("users")
+      //  .Document(FirebaseAuth.Instance.CurrentUser.Uid)
+      //  .Get()
+      //  .AddOnCompleteListener(new OnCompleteListener(tcs));
       return tcs.Task;
     }
 
-
+    public Task<bool> RegisterAsync(string username, string email, string password)
+    {
+      var tcs = new TaskCompletionSource<bool>();
+      FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password)
+        .ContinueWith((task) => OnAuthCompleted(task, tcs));
+      return tcs.Task;
+    }
   }
 }

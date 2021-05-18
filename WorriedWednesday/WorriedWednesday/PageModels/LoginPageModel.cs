@@ -12,49 +12,27 @@ namespace WorriedWednesday.PageModels
 {
   public class LoginPageModel : PageModelBase
   {
-    ICommand _loginCommand;
+    ICommand _loginCommand, _registerCommand;
     INavigationService _navigationService;
     IAccountService _accountService;
+    string _name, _email, _password, _confirmPassword;
     public LoginPageModel(INavigationService navigationService, IAccountService accountService)
     {
       _navigationService = navigationService;
       _accountService = accountService;
       LoginCommand = new Command(DoLoginAction);
-      //RegisterCommand = new Command(Register);
-      //auth = DependencyService.Get<IAuth>();
+      RegisterCommand = new Command(DoRegisterAction);
     }
 
     public ICommand LoginCommand
     { get => _loginCommand;
       set => SetProperty(ref _loginCommand, value);
     }
-
-    //IAuth auth;
-    string _name, _email, _password, _confirmPassword;
-
-    //public event PropertyChangedEventHandler PropertyChanged;
-
-    //public ICommand RegisterCommand { get; set; }
-
-    //async void Register(object parameter)
-    //{
-    //  if (ConfirmPassword != Password)
-    //  {
-    //    await App.Current.MainPage.DisplayAlert("Error", "Passwords do not match", "Ok");
-    //  }
-    //  else
-    //  {
-    //    var user = auth.RegisterWithEmailAndPassword(email, password);
-    //    if (user != null)
-    //    {
-    //      Name = string.Empty;
-    //      Email = string.Empty;
-    //      Password = string.Empty;
-    //      ConfirmPassword = string.Empty;
-    //      await Shell.Current.GoToAsync($"//{nameof(ReadOthersPage)}");
-    //    }
-    //  }
-    //}
+    public ICommand RegisterCommand
+    {
+      get => _registerCommand;
+      set => SetProperty(ref _registerCommand, value);
+    }
 
     async void DoLoginAction()
     {
@@ -65,21 +43,29 @@ namespace WorriedWednesday.PageModels
       }
       else
       {
-        Console.WriteLine("LOL SORRY LOLOLOLOL " + Email + "     " + Password);
         //Display failure alert
+        await App.Current.MainPage.DisplayAlert("Error", "Email/Password not found. Please try again", "Ok");
       }
     }
-
-    void Login(object parameter)
+    async void DoRegisterAction()
     {
-      //string token = await auth.LoginWithEmailAndPassword(email, password);
-      //if (token != string.Empty)
-      //{
-
-      //  Email = string.Empty;
-      //  Password = string.Empty;
-      //  await _navigationService.NavigateToAsync<ReadOthersPageModel>();
-      //}
+      if (ConfirmPassword != Password)
+      {
+        //Display failure alert
+        await App.Current.MainPage.DisplayAlert("Error", "Passwords do not match", "Ok");
+      }
+      else
+      {
+        var registerAttempt = await _accountService.RegisterAsync(Name, Email, Password);
+        if (registerAttempt)
+        {
+          Name = string.Empty;
+          Email = string.Empty;
+          Password = string.Empty;
+          ConfirmPassword = string.Empty;
+          await _navigationService.NavigateToAsync<DashboardPageModel>();
+        }
+      }
     }
 
     // unneeded because of ExtendedBindableObject's SetProperty()
@@ -99,7 +85,6 @@ namespace WorriedWednesday.PageModels
     {
       get => _email;
       set => SetProperty(ref _email, value);
-
     }
 
     public string Password

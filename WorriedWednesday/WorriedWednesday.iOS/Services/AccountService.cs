@@ -62,5 +62,10 @@ namespace WorriedWednesday.iOS.Services
       return tcs.Task;
 
     }
+
+    public Task<bool> RegisterAsync(string username, string email, string password)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
