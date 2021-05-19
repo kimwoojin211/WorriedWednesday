@@ -75,22 +75,24 @@ namespace WorriedWednesday.Droid.Services
 
       ////firebasefirestore.instance keeps breaking :(
 
-      //FirebaseFirestore.Instance
-      //  .Collection("users")
-      //  .Document(FirebaseAuth.Instance.CurrentUser.Uid)
-      //  .Get()
-      //  .AddOnCompleteListener(new OnCompleteListener(tcs));
+      FirebaseFirestore.Instance
+        .Collection("users")
+        .Document(FirebaseAuth.Instance.CurrentUser.Uid)
+        .Get()
+        .AddOnCompleteListener(new OnCompleteListener(tcs));
       return tcs.Task;
     }
 
     public Task<bool> AddWorryAsync(Worry worry)
     {
-      throw new NotImplementedException();
+      var tcs = new TaskCompletionSource<bool>();
+      return tcs.Task;
     }
 
     public Task<bool> AddReplyAsync(Worry worry, Reply reply)
     {
-      throw new NotImplementedException();
+      var tcs = new TaskCompletionSource<bool>();
+      return tcs.Task;
     }
   }
 }

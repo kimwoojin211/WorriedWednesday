@@ -72,5 +72,14 @@ namespace WorriedWednesday.iOS.Services
 
     }
 
+    public Task<bool> AddWorryAsync(Worry worry)
+    {
+      throw new NotImplementedException();
+    }
+
+    public Task<bool> AddReplyAsync(Worry worry, Reply reply)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

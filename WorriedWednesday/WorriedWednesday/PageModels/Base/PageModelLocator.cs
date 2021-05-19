@@ -23,23 +23,31 @@ namespace WorriedWednesday.PageModels.Base
       _viewLookup = new Dictionary<Type, Type>();
 
       // register pages and page models
+
       Register<DashboardPageModel, DashboardPage>();
       Register<LoginPageModel, LoginPage>();
       Register<ReadOthersPageModel, ReadOthersPage>();
       Register<SettingsPageModel, SettingsPage>();
-      Register<WriteWorryPageModel, WriteWorryPage>();
       Register<WriteMessagePageModel, WriteMessagePage>();
       Register<UserWorriesPageModel, UserWorriesPage>();
       Register<WorryDetailsPageModel, WorryDetailsPage>();
 
 
       // Register services (services are registered as Singletons default)
+
       _container.Register<INavigationService, NavigationService>();
-      _container.Register<IAccountService, MockAccountService>();
+
+      // mock/test services
+
+      //_container.Register<IAccountService, MockAccountService>();
       _container.Register<IAllWorriesService, MockAllWorriesService>();
-      //_container.Register<IAccountService>(DependencyService.Get<IAccountService>());
+       _container.Register(DependencyService.Get<IRepository<TestData>>());
+
+      //firestore services
+
+      _container.Register<IAccountService>(DependencyService.Get<IAccountService>());
       //_container.Register<IAllWorriesService>(DependencyService.Get<IAllWorriesService>());
-      _container.Register(DependencyService.Get<IRepository<TestData>>());
+
     }
 
     /// <summary>
