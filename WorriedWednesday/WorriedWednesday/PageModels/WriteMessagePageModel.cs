@@ -65,8 +65,7 @@ namespace WorriedWednesday
           Message = Message,
           AuthorId = _id
         };
-        Worry.Replies.Add(item);
-        await _allWorriesService.LogWorryAsync(Worry);
+        await _accountService.AddReplyAsync(Worry, item);
       }
       else
       {
@@ -78,6 +77,7 @@ namespace WorriedWednesday
           AuthorId = _id
         };
         await _allWorriesService.LogWorryAsync(item);
+        await _accountService.AddWorryAsync(item);
       }
 
       await _navigationService.NavigateToAsync<DashboardPageModel>();

@@ -12,5 +12,7 @@ namespace WorriedWednesday.Services.Account
     Task<bool> RegisterAsync(string name, string email, string password);
     Task<bool> PasswordResetAsync(string email);
     Task<AuthenticatedUser> GetUserAsync();
+    Task<bool> AddWorryAsync(Worry worry);
+    Task<bool> AddReplyAsync(Worry worry, Reply reply);
   }
 }

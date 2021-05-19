@@ -5,17 +5,18 @@
              xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons"
              >
   <StackLayout>
-    <StackLayout>
+    <StackLayout IsVisible="false">
       <Label Text="Worry"/>
       <Label Text="{Binding Worry.Message}"/>
     </StackLayout>
-      
-    <StackLayout>
-      <Label Text="Id"/>
-      <Entry Text="{Binding Id, Mode=TwoWay}"/>
+
+    <StackLayout
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="Center">
       <Label Text="Message"/>
       <Entry Text="{Binding Message, Mode=TwoWay}"
-             VerticalOptions="FillAndExpand"/>
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="Center"/>
       <buttons:BindableButton BindingContext="{Binding SubmitButtonModel}"
                               HorizontalOptions="Center"
                               WidthRequest="150"

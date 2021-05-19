@@ -56,14 +56,11 @@ namespace WorriedWednesday.PageModels
     public Worry SelectedWorry
     {
       get => _selectedWorry;
-      set
-      {
-        SetProperty(ref _selectedWorry, value);
-        if(_selectedWorry != null)
-        { 
-          Task.Run(() => SelectedAction());
-        }
-      }
+      set => SetProperty(ref _selectedWorry, value);
+        //if(_selectedWorry != null)
+        //{ 
+        //  Task.Run(() => SelectedAction());
+        //}
     }
 
     public ButtonModel WriteWorryButtonModel
@@ -87,11 +84,13 @@ namespace WorriedWednesday.PageModels
 
     public override async Task InitializeAsync(object navigationData)
     {
-      //var user = await _accountService.GetUserAsync();
-      //Worries = user.Worries;
       SelectedWorry = null;
-      List<Worry> worryList =  await _allWorriesService.GetWorriesAsync();
-      Worries = new ObservableCollection<Worry>(worryList);
+      var user = await _accountService.GetUserAsync();
+      Worries = new ObservableCollection<Worry>(user.Worries);
+
+      //List<Worry> worryList =  await _allWorriesService.GetWorriesAsync();
+      //Worries = new ObservableCollection<Worry>(worryList);
+
       await base.InitializeAsync(navigationData);
     }
   }

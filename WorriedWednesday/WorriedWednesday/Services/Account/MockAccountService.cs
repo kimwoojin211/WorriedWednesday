@@ -6,9 +6,11 @@ using WorriedWednesday.Models;
 
 namespace WorriedWednesday.Services.Account
 {
-  public class MockAccountService :IAccountService
+  public class MockAccountService : IAccountService
   {
-    public AuthenticatedUser user = new AuthenticatedUser();
+    List<AuthenticatedUser> users = new List<AuthenticatedUser>();
+    AuthenticatedUser user;
+    int _index;
 
     public Task<bool> LoginAsync(string email, string password)
     {
@@ -17,7 +19,20 @@ namespace WorriedWednesday.Services.Account
         return Task.FromResult(false);
       }
 
-      user.Id = email;
+      int index = users.FindIndex(user => user.Id == email);
+      if (index != -1)
+      {
+        user = users[index];
+        _index = index;
+      }
+      else
+      {
+        _index = users.Count;
+        user = new AuthenticatedUser();
+        user.Id = email;
+        user.Worries = new List<Worry>();
+        users.Add(user);
+      }
       return Task.Delay(500).ContinueWith((Task) => true);
     }
 
@@ -38,6 +53,28 @@ namespace WorriedWednesday.Services.Account
     public Task<AuthenticatedUser> GetUserAsync()
     {
       return Task.FromResult(user);
+    }
+
+    public Task<bool> AddWorryAsync(Worry worry)
+    {
+      //user.Worries.Insert(0,worry);
+      users[_index].Worries.Add(worry);
+      user = users[_index];
+      return Task.FromResult(true);
+    }
+
+    public Task<bool> AddReplyAsync(Worry worry, Reply reply)
+    {
+      int userIndex = users.FindIndex(match => match.Id == worry.AuthorId);
+      int index = users[userIndex].Worries.FindIndex(matchWorry => matchWorry.Equals(worry)); // omega hack (users[0])
+
+      if (index == -1)
+      {
+        return Task.FromResult(false);
+      }
+
+      users[userIndex].Worries[index].Replies.Add(reply);
+      return Task.FromResult(true);
     }
     //public Task<bool> LogWorryAsync(Worry worry)
     //{

@@ -19,6 +19,20 @@
                 <StackLayout>
                   <Label Text="{Binding Message}"/>
                   <Label Text="{Binding Timestamp}"/>
+
+                    <!--<ListView ItemsSource="{Binding Replies}">
+                      <ListView.ItemTemplate>
+                        <DataTemplate>
+                          <ViewCell>
+                            <StackLayout>
+                              <Label Text="{Binding Message}"/>
+
+                             </StackLayout>
+                          </ViewCell>
+                        </DataTemplate>
+                      </ListView.ItemTemplate>
+                    </ListView>-->
+                  
                 </StackLayout>
               </ViewCell>
             </DataTemplate>
