@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using TinyIoC;
 using WorriedWednesday.Services.Navigation;
 using WorriedWednesday.Pages;

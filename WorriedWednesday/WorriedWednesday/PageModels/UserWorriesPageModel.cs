@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.Models;
 using WorriedWednesday.PageModels.Base;
@@ -24,16 +22,15 @@ namespace WorriedWednesday.PageModels
     ButtonModel _writeWorryButtonModel;
     INavigationService _navigationService;
     IAccountService _accountService;
-    IAllWorriesService _allWorriesService;
     public UserWorriesPageModel(INavigationService navigationService, 
-                                IAccountService accountService, 
-                                IAllWorriesService allWorriesService)
+                                IAccountService accountService)
     {
       _accountService = accountService;
-      _allWorriesService = allWorriesService;
       _navigationService = navigationService;
       WriteWorryButtonModel = new ButtonModel("New Worry", WriteAction);
     }
+
+    //public properties
     public string Text
     {
       get => _text;
@@ -46,13 +43,15 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _timestamp, value);
     }
 
-    //public List<Worry> Worries
+    //populates listview of all user's worries ever submitted
     public ObservableCollection<Worry> Worries
     {
       get => _worries;
       set => SetProperty(ref _worries, value);
     }
 
+    // when user selects a worry from the listview on UserWorriesPage, I want to redirect them to a WorryDetailsPageModel, with SelectedWorry as navigationdata
+    // effectively acting as a details page, where i can also list out all relevant replies
     public Worry SelectedWorry
     {
       get => _selectedWorry;
@@ -72,13 +71,11 @@ namespace WorriedWednesday.PageModels
     private async void SelectedAction()
     {
       await _navigationService.NavigateToAsync<WorryDetailsPageModel>(SelectedWorry);
-      //Worries.Insert(0, new Worry { Text, Timestamp, Replies, UserId }
     }
 
     private async void WriteAction()
     {
       await _navigationService.NavigateToAsync<WriteMessagePageModel>();
-      //Worries.Insert(0, new Worry { Text, Timestamp, Replies, UserId }
     }
 
 
@@ -87,9 +84,6 @@ namespace WorriedWednesday.PageModels
       SelectedWorry = null;
       var user = await _accountService.GetUserAsync();
       Worries = new ObservableCollection<Worry>(user.Worries);
-
-      //List<Worry> worryList =  await _allWorriesService.GetWorriesAsync();
-      //Worries = new ObservableCollection<Worry>(worryList);
 
       await base.InitializeAsync(navigationData);
     }

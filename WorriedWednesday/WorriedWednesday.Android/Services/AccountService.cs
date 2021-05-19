@@ -18,6 +18,10 @@ namespace WorriedWednesday.Droid.Services
     public AccountService()
     {
     }
+
+    // to test with active firebase auth database, use
+    // email = test@test.com
+    // password = 123456
     public Task<bool> LoginAsync(string email, string password)
     {
       var tcs = new TaskCompletionSource<bool>();
@@ -43,10 +47,6 @@ namespace WorriedWednesday.Droid.Services
       FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password)
         .ContinueWith((task) => OnRegisterCompleted(task, tcs));
 
-      Console.WriteLine("");
-      Console.WriteLine("11111111111111111111111111111 DID YA MAKE IT? 11111111111111111111111111111");
-      Console.WriteLine("");
-
       return tcs.Task;
     }
 
@@ -71,10 +71,9 @@ namespace WorriedWednesday.Droid.Services
     public Task<AuthenticatedUser> GetUserAsync()
     {
       var tcs = new TaskCompletionSource<AuthenticatedUser>();
-      //Console.WriteLine("              @#$%$#@#$%^(*()(*&*()*&            yes it's getting the currentuserid                (*&*(*&(*&*&*(*&*(*&REREWR%^");
 
-      ////firebasefirestore.instance keeps breaking :(
-
+      //// firebasefirestore.instance keeps breaking :(
+      
       FirebaseFirestore.Instance
         .Collection("users")
         .Document(FirebaseAuth.Instance.CurrentUser.Uid)

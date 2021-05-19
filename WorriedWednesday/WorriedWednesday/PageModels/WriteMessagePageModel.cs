@@ -37,13 +37,6 @@ namespace WorriedWednesday
       set => SetProperty(ref _message, value);
     }
 
-    // manually enter id so i know which post belongs to which account until i can get accountservice working
-    //public string Id
-    //{
-    //  get => _id;
-    //  set => SetProperty(ref _id, value);
-    //}
-
     public Worry Worry
     {
       get => _worry;

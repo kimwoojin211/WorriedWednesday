@@ -19,7 +19,7 @@ namespace WorriedWednesday.Droid.Extensions
       }
       catch (Exception e)
       {
-        System.Diagnostics.Debug.WriteLine("EXCEPTION:" + e);
+        System.Diagnostics.Debug.WriteLine("EXCEPTION:");
       }
       return default;
     }

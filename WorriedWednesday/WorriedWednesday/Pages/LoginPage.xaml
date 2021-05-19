@@ -1,18 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:WorriedWednesday.PageModels"
-             xmlns:models="clr-namespace:WorriedWednesday.Models"
              Title="Login"
              x:Class="WorriedWednesday.Pages.LoginPage">
-  
-  <!--<ContentPage.Resources>
-    <ResourceDictionary>
-      <vm:LoginPageModel x:Key="vm"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>-->
 
+  <!--// to test with active firebase auth database, use
+    // email = test@test.com
+    // password = 123456-->
+  
   <Grid Margin="16,0">
+
+    <!--login stack. need to figure out way to toggle back to login form once send email button is clicked-->
     <StackLayout x:Name="loginStackLayout" 
              VerticalOptions="Center"
              IsVisible="True">
@@ -42,6 +40,7 @@
       </StackLayout>
     </StackLayout>
 
+    <!--register stack. need to figure out way to toggle back to login form once send email button is clicked-->
     <StackLayout x:Name="registerStackLayout"
              VerticalOptions="Center"
              IsVisible="False">
@@ -69,7 +68,7 @@
     </StackLayout>
 
     
-    <!--forgotpassword stack. need to figure out way to toggle back to login form once button is clicked-->
+    <!--forgotpassword stack. need to figure out way to toggle back to login form once send email button is clicked-->
     <StackLayout x:Name="ForgotPasswordStackLayout"
              VerticalOptions="Center"
              IsVisible="false">

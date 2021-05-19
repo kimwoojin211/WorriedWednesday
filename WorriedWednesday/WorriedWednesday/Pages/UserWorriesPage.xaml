@@ -14,27 +14,14 @@
               SelectedItem="{Binding SelectedWorry, Mode=TwoWay}">
       <ListView.ItemTemplate>
         <DataTemplate>
-              <ViewCell>
-                <StackLayout>
-                  <Label Text="{Binding Message}"/>
-                  <Label Text="{Binding Timestamp}"/>
-                </StackLayout>
-              </ViewCell>
-            </DataTemplate>
-          </ListView.ItemTemplate>
-        </ListView>
-
-    <!--<ListView ItemsSource="{Binding SelectedWorry.Replies}">
-                      <ListView.ItemTemplate>
-                        <DataTemplate>
-                          <ViewCell>
-                            <StackLayout>
-                              <Label Text="{Binding Message}"/>
-
-                             </StackLayout>
-                          </ViewCell>
-                        </DataTemplate>
-                      </ListView.ItemTemplate>
-                    </ListView>-->
+          <ViewCell>
+            <StackLayout>
+              <Label Text="{Binding Message}"/>
+              <Label Text="{Binding Timestamp}"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
   </StackLayout>
 </ContentPage>

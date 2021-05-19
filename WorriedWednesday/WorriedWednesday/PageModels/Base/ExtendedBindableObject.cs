@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Text;
 using Xamarin.Forms;
 
 namespace WorriedWednesday.PageModels.Base
@@ -20,14 +18,14 @@ namespace WorriedWednesday.PageModels.Base
       OnPropertyChanged(propertyName);
       return true;
     }
-    //<summary>
-    //Simplifies the process of updating a Bindable Property and calling INotifyPropertyChanged
-    //  </summary>
-    //  <typeparam name="T"></typeparam>
-    //  <param name="storage"></param>
-    //  <param name="value"></param>
-    //  <param name="propertyName"></param>
-    //  <returns></returns>
+    ///  <summary>
+    ///   Simplifies the process of updating a Bindable Property and calling INotifyPropertyChanged
+    ///  </summary>
+    ///  <typeparam name="T"></typeparam>
+    ///  <param name="storage"></param>
+    ///  <param name="value"></param>
+    ///  <param name="propertyName"></param>
+    ///  <returns></returns>
 
   }
 }

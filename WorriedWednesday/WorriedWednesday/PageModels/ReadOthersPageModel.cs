@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.Models;
 using WorriedWednesday.PageModels.Base;
-using WorriedWednesday.Services;
 using WorriedWednesday.Services.Account;
 using WorriedWednesday.Services.AllWorries;
 using WorriedWednesday.Services.Navigation;
@@ -107,7 +104,7 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _randomWorryButtonModel, value);
     }
 
-    //actions
+    //button actions
     private async void WriteAction()
     {
       await _navigationService.NavigateToAsync<WriteMessagePageModel>();
@@ -158,28 +155,29 @@ namespace WorriedWednesday.PageModels
     public override async Task InitializeAsync(object navigationData)
     {
 
-      Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          1");
-      //var items = await PageModelLocator.Resolve<IRepository<TestData>>().GetAll();
-      //if (items != null)
-      //{
-
-      //}
+      // ~~~~~~~~~~~~~~ getUserAsync always fails here first after log in.
+      // ~~~~~~~~~~~~~~ Android's FirebaseFirestore.Instance within GetUserAsync (Defined in Android's AccountService) always gets an error
       var user = await _accountService.GetUserAsync();
-      Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          3");
-      if (user != null)
-      {
-        Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         4");
-      }
-      _othersWorries = await _allWorriesService.GetWorriesAsync();
-      _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id);
-      Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
 
-      if(!_othersWorries.Any())
+      //if (user != null)
+      //{
+      //}
+
+      _othersWorries = await _allWorriesService.GetWorriesAsync(); // requests list of all worries from worry database
+      _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id); // omits from view all worries that belong to the current logged in user
+      //stretch goal: also omit worries that current user has replied to.
+      //stretch goal: include a bool flag in case people do not want to see a particular worry
+
+
+
+      if(!_othersWorries.Any()) // if there's no worries left for current user to view
       {
         CurrentWorry = new Worry
         {
           Message = "No new Worries!"
         };
+
+        //disable all buttons on page (except to write a new message)
         PrevWorryButtonModel.IsEnabled = false;
         NextWorryButtonModel.IsEnabled = false;
         RandomWorryButtonModel.IsEnabled = false;
@@ -187,8 +185,10 @@ namespace WorriedWednesday.PageModels
       }
       else
       {
-        CurrentWorry = _othersWorries[0];
-        ReplyButtonModel.IsEnabled = true ;
+        CurrentWorry = _othersWorries[0]; // initializes to most recently added worry
+        ReplyButtonModel.IsEnabled = true;  // enable reply button to allow current user to reply to current worry
+
+        // only 1 worry available, so worry navigation still disabled
         if (_othersWorries.Count == 1)
         {
           PrevWorryButtonModel.IsEnabled = false;

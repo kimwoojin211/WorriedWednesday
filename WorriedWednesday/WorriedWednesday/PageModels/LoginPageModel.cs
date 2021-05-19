@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using WorriedWednesday.PageModels.Base;
 using WorriedWednesday.Services.Account;
 using WorriedWednesday.Services.Navigation;
 using Xamarin.Forms;
+
+// to test with active firebase auth database, use
+// email = test@test.com
+// password = 123456
 
 namespace WorriedWednesday.PageModels
 {
@@ -98,6 +98,7 @@ namespace WorriedWednesday.PageModels
         var registerAttempt = await _accountService.RegisterAsync(Name, Email, Password);
         if (registerAttempt)
         {
+          // clears entry fields. otherwise, if someone logs in and logs back out, previously entered fields still there
           Name = string.Empty;
           Email = string.Empty;
           Password = string.Empty;

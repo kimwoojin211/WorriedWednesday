@@ -16,8 +16,6 @@ namespace WorriedWednesday.Services.Navigation
       Page page = PageModelLocator.CreatePageFor<TPageModel>();
       if (setRoot)
       {
-        // if page is tabbedpage (a.k.a. dashboardpage), then current active page won't be wrapped as a NavigationPage
-        // and therefore doesn't have like. a back button. or something.
         if(page is TabbedPage tabbedPage)
         {
           App.Current.MainPage = tabbedPage;

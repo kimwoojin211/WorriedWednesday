@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WorriedWednesday.PageModels.Base;
+﻿using WorriedWednesday.PageModels.Base;
 using WorriedWednesday.Services.Navigation;
 using WorriedWednesday.ViewModels.Buttons;
 

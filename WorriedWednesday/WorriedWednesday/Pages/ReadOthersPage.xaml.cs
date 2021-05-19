@@ -13,30 +13,10 @@ namespace WorriedWednesday.Pages
   [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class ReadOthersPage : ContentPage
   {
-    //    IAuth auth;
     public ReadOthersPage()
     {
       InitializeComponent();
     }
-    //    protected override async void OnAppearing()
-    //    {
-    //      base.OnAppearing();
-    //      if (!auth.IsSignIn())
-    //      {
-    //        var user = await auth.GetUserAsync();
-    //        if(user != null)
-    //        {
 
-    //        }
-    //        authenticatedUser.IsVisible = false;
-    //        await Task.Delay(300);
-    //        await Navigation.PushAsync(new LoginPage()); ;
-    //      }
-    //    }
-    //    //async void OnSignOutButtonClicked(object sender, EventArgs e)
-    //    //{
-    //    //  auth.SignOut();
-    //    //  await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-    //    //}
   }
 }

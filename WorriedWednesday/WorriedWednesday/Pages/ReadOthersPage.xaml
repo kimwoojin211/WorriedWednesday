@@ -16,10 +16,7 @@
                                 VerticalOptions="End" />
                              
     </StackLayout>
-    <!--<Label Text="{Binding UserId, StringFormat='Hello {0}!'}"
-           HorizontalOptions="FillAndExpand"
-           VerticalOptions="End"/>
-    <StackLayout  BindingContext="{Binding CurrentWorry}">-->
+
     <Label BindingContext="{Binding CurrentWorry}"
              Text="{Binding Message}"
              VerticalOptions="FillAndExpand"

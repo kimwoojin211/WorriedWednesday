@@ -12,6 +12,8 @@ namespace WorriedWednesday.Services.Account
     AuthenticatedUser user;
     int _index;
 
+
+    // any non-blank entry will succesfully log in, but program will remember the entered email as the current logged in user's Id
     public Task<bool> LoginAsync(string email, string password)
     {
       if(string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
@@ -57,7 +59,6 @@ namespace WorriedWednesday.Services.Account
 
     public Task<bool> AddWorryAsync(Worry worry)
     {
-      //user.Worries.Insert(0,worry);
       users[_index].Worries.Add(worry);
       user = users[_index];
       return Task.FromResult(true);
@@ -66,7 +67,7 @@ namespace WorriedWednesday.Services.Account
     public Task<bool> AddReplyAsync(Worry worry, Reply reply)
     {
       int userIndex = users.FindIndex(match => match.Id == worry.AuthorId);
-      int index = users[userIndex].Worries.FindIndex(matchWorry => matchWorry.Equals(worry)); // omega hack (users[0])
+      int index = users[userIndex].Worries.FindIndex(matchWorry => matchWorry.Equals(worry)); 
 
       if (index == -1)
       {
@@ -76,10 +77,6 @@ namespace WorriedWednesday.Services.Account
       users[userIndex].Worries[index].Replies.Add(reply);
       return Task.FromResult(true);
     }
-    //public Task<bool> LogWorryAsync(Worry worry)
-    //{
-    //  Worries.Insert(0, worry);
-    //  return Task.FromResult(true);
-    //}
+
   }
 }
