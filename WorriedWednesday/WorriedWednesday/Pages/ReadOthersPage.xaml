@@ -7,47 +7,25 @@
              xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons"
              NavigationPage.HasNavigationBar="False">
 
-  <!--<ContentPage.Resources>
-    <ResourceDictionary>
-      <pm:ReadOthersPageModel x:Key="pm"/>
-      <m:Worry x:Key="m"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>-->
-
   <StackLayout>
     
-    <!--<StackLayout BindingContext="{StaticResource pm}">
-      <Label x:Name="authenticatedUser " 
-            Text="{Binding UserName, StringFormat='Welcome {0}!'}" />
-      <Label Text="Swipe right or left to read more worries" />
-    </StackLayout>
-
-    <StackLayout VerticalOptions="Center" 
-                 HorizontalOptions="Center" 
-                 BindingContext="{StaticResource m}">
-      <Label Text="{Binding Text}" />
-    </StackLayout>-->
     <StackLayout BackgroundColor="{StaticResource Primary}">
       <buttons:BindableButton BindingContext="{Binding WriteWorryButtonModel}"
                                 HorizontalOptions="Center"
                                 WidthRequest="150"
-                                VerticalOptions="End"
-                              />
+                                VerticalOptions="End" />
+                             
     </StackLayout>
-    <Label Text="{Binding UserId, StringFormat='Hello {0}!'}"
+    <!--<Label Text="{Binding UserId, StringFormat='Hello {0}!'}"
            HorizontalOptions="FillAndExpand"
            VerticalOptions="End"/>
-    <StackLayout  BindingContext="{Binding CurrentWorry}">
-      <Label 
+    <StackLayout  BindingContext="{Binding CurrentWorry}">-->
+    <Label BindingContext="{Binding CurrentWorry}"
              Text="{Binding Message}"
              VerticalOptions="FillAndExpand"
-             HorizontalOptions="Center"/>
-             <!--Padding="50,100,50,100"/>-->
-      <Label 
-           Text="{Binding AuthorId}"
-           VerticalOptions="FillAndExpand"
-        />
-    </StackLayout>
+             HorizontalOptions="FillAndExpand"
+             Padding="50,100,50,100" />
+    
     <buttons:BindableButton BindingContext="{Binding ReplyButtonModel}"
                                   WidthRequest="125"/>
     

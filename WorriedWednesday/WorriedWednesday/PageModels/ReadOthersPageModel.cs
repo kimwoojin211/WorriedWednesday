@@ -51,11 +51,11 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _message, value);
     }
 
-    public string UserId
-    {
-      get => _userId;
-      set => SetProperty(ref _userId, value);
-    }
+    //public string UserId
+    //{
+    //  get => _userId;
+    //  set => SetProperty(ref _userId, value);
+    //}
 
 
     public string Name
@@ -164,15 +164,15 @@ namespace WorriedWednesday.PageModels
       //{
 
       //}
-      _othersWorries = await _allWorriesService.GetWorriesAsync();
-      Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
       var user = await _accountService.GetUserAsync();
       Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          3");
       if (user != null)
       {
-        UserId = user.Id;
         Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         4");
       }
+      _othersWorries = await _allWorriesService.GetWorriesAsync();
+      _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id);
+      Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
 
       if(!_othersWorries.Any())
       {
