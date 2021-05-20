@@ -75,6 +75,7 @@ namespace WorriedWednesday.PageModels
     //async actions
     async void DoLoginAction()
     {
+
       var loginAttempt = await _accountService.LoginAsync(Email, Password);
       if(loginAttempt)
       {
@@ -86,9 +87,14 @@ namespace WorriedWednesday.PageModels
         await App.Current.MainPage.DisplayAlert("Error", "Email/Password not found. Please try again", "Ok");
       }
     }
+
     async void DoRegisterAction()
     {
-      if (ConfirmPassword != Password)
+      if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
+      {
+        await App.Current.MainPage.DisplayAlert("Error", "Please fill out all information", "Ok");
+      }
+      else if (ConfirmPassword != Password)
       {
         //Display failure alert
         await App.Current.MainPage.DisplayAlert("Error", "Passwords do not match", "Ok");
@@ -104,6 +110,10 @@ namespace WorriedWednesday.PageModels
           Password = string.Empty;
           ConfirmPassword = string.Empty;
           await _navigationService.NavigateToAsync<DashboardPageModel>();
+        }
+        else
+        {
+          await App.Current.MainPage.DisplayAlert("Error", "Email is already in use. Please use another email", "Ok");
         }
       }
     }

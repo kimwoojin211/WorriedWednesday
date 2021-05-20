@@ -44,7 +44,7 @@ namespace WorriedWednesday.PageModels.Base
 
       //firestore services
 
-      _container.Register<IAccountService>(DependencyService.Get<IAccountService>());
+      //_container.Register<IAccountService>(DependencyService.Get<IAccountService>());
       //_container.Register<IAllWorriesService>(DependencyService.Get<IAllWorriesService>());
 
     }

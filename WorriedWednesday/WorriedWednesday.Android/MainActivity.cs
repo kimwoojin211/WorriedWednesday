@@ -17,9 +17,7 @@ namespace WorriedWednesday.Droid
 
       Xamarin.Essentials.Platform.Init(this, savedInstanceState);
       global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-
-      //FirebaseApp.InitializeApp(Application.Context); // is this not necessary?
-      
+      FirebaseApp.InitializeApp(Application.Context);
       LoadApplication(new App());
 
     }

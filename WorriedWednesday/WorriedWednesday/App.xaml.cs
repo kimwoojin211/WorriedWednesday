@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WorriedWednesday.PageModels.Base;
 using WorriedWednesday.Services.Navigation;
 
+
 namespace WorriedWednesday
 {
   public partial class App : Application
@@ -24,6 +25,7 @@ namespace WorriedWednesday
     protected override async void OnStart()
     {
       base.OnStart();
+      //AppCenter.Start("ios=6cd00531-72ca-4eba-9b49-a6629366bf76;android=330f9440-d9fd-4016-a6f0-424493225c26;uwp=9f3a59ef-c845-48cf-991b-11b81daec540;windowsdesktop={Your App Secret}", typeof(Analytics), typeof(Crashes));
       await InitNavigation();
       base.OnResume();
     }
