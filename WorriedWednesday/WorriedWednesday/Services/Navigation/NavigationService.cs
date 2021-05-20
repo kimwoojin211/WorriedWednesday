@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WorriedWednesday.PageModels.Base;
+using WorriedWednesday.Pages;
 using Xamarin.Forms;
 
 namespace WorriedWednesday.Services.Navigation
@@ -21,6 +22,10 @@ namespace WorriedWednesday.Services.Navigation
         if(page is TabbedPage tabbedPage)
         {
           App.Current.MainPage = tabbedPage;
+        }
+        else if(page is LoginPage loginpage)
+        {
+          App.Current.MainPage = loginpage;
         }
         else
         { 
