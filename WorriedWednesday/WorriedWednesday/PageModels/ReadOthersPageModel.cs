@@ -170,8 +170,16 @@ namespace WorriedWednesday.PageModels
       {
         Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         4");
       }
+      
+      // get all worries in Worry Database
       _othersWorries = await _allWorriesService.GetWorriesAsync();
+      
+      // remove worries that belong to currently logged user
       _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id);
+
+      // remove worries that currently logged user has already responded to
+      _othersWorries.RemoveAll(worry => worry.Replies.FindIndex(reply => reply.AuthorId == user.Id) != -1);
+
       Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
 
       if(!_othersWorries.Any())
