@@ -5,8 +5,8 @@
 
   <StackLayout>
     <StackLayout>
-      <Label Text="{Binding Worry.Message}"/>
-      <Label Text="{Binding Worry.Timestamp}"/>
+      <Label Text="{Binding SelectedWorry.Message}"/>
+      <Label Text="{Binding SelectedWorry.Timestamp}"/>
     </StackLayout>
     <ListView ItemsSource="{Binding Replies}">
       <ListView.ItemTemplate>

@@ -10,10 +10,13 @@ using WorriedWednesday.Services.Navigation;
 using WorriedWednesday.Services.AllWorries;
 using WorriedWednesday.ViewModels.Buttons;
 using System.Runtime.CompilerServices;
+using Xamarin.CommunityToolkit;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace WorriedWednesday.PageModels
 {
-  public class UserWorriesPageModel : PageModelBase
+  public class UserWorriesPageModel : PageModelBase 
   {
 
     string _text;
@@ -25,6 +28,7 @@ namespace WorriedWednesday.PageModels
     INavigationService _navigationService;
     IAccountService _accountService;
     IAllWorriesService _allWorriesService;
+    ICommand _itemTappedCommand;
     public UserWorriesPageModel(INavigationService navigationService, 
                                 IAccountService accountService, 
                                 IAllWorriesService allWorriesService)
@@ -33,6 +37,10 @@ namespace WorriedWednesday.PageModels
       _allWorriesService = allWorriesService;
       _navigationService = navigationService;
       WriteWorryButtonModel = new ButtonModel("New Worry", WriteAction);
+      ItemTappedCommand = new Command((selectedWorry) =>
+      {
+        SelectedAction(selectedWorry);
+      });
     }
     public string Text
     {
@@ -69,9 +77,17 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _writeWorryButtonModel, value);
     }
 
-    private async void SelectedAction()
+
+    public ICommand ItemTappedCommand
     {
-      await _navigationService.NavigateToAsync<WorryDetailsPageModel>(SelectedWorry);
+      get => _itemTappedCommand;
+      set => SetProperty(ref _itemTappedCommand, value);
+    }
+
+
+    private async void SelectedAction(object selectedWorry)
+    {
+      await _navigationService.NavigateToAsync<WorryDetailsPageModel>((Worry) selectedWorry);
       //Worries.Insert(0, new Worry { Text, Timestamp, Replies, UserId }
     }
 

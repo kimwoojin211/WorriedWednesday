@@ -39,13 +39,13 @@ namespace WorriedWednesday.PageModels.Base
 
       // mock/test services
 
-      //_container.Register<IAccountService, MockAccountService>();
+      _container.Register<IAccountService, MockAccountService>();
       _container.Register<IAllWorriesService, MockAllWorriesService>();
        _container.Register(DependencyService.Get<IRepository<TestData>>());
 
       //firestore services
 
-      _container.Register<IAccountService>(DependencyService.Get<IAccountService>());
+      //_container.Register<IAccountService>(DependencyService.Get<IAccountService>());
       //_container.Register<IAllWorriesService>(DependencyService.Get<IAllWorriesService>());
 
     }
