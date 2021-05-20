@@ -5,7 +5,7 @@
              xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons"
              >
   <StackLayout>
-    <StackLayout IsVisible="false">
+    <StackLayout IsVisible="{Binding IsReply}">
       <Label Text="Worry"/>
       <Label Text="{Binding Worry.Message}"/>
     </StackLayout>

@@ -17,36 +17,23 @@
                               WidthRequest="150"
                               VerticalOptions="End"/>
     <ListView ItemsSource="{Binding Worries}">
-      
+
       <ListView.Behaviors>
         <xct:EventToCommandBehavior EventName="ItemTapped"
                                     Command="{Binding ItemTappedCommand}"
                                     EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
       </ListView.Behaviors>
-      
+
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
             <StackLayout>
-                  <Label Text="{Binding Message}"/>
-                  <Label Text="{Binding Timestamp}"/>
-                </StackLayout>
-              </ViewCell>
-            </DataTemplate>
-          </ListView.ItemTemplate>
-        </ListView>
-
-    <!--<ListView ItemsSource="{Binding SelectedWorry.Replies}">
-                      <ListView.ItemTemplate>
-                        <DataTemplate>
-                          <ViewCell>
-                            <StackLayout>
-                              <Label Text="{Binding Message}"/>
-
-                             </StackLayout>
-                          </ViewCell>
-                        </DataTemplate>
-                      </ListView.ItemTemplate>
-                    </ListView>-->
+              <Label Text="{Binding Message}"/>
+              <Label Text="{Binding Timestamp}"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
   </StackLayout>
 </ContentPage>

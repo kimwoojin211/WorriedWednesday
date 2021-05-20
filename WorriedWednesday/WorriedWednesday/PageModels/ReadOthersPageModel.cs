@@ -182,6 +182,7 @@ namespace WorriedWednesday.PageModels
 
       Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
 
+      // if there are no worries to be displayed, disable all navigation buttons and display "no worries" message
       if(!_othersWorries.Any())
       {
         CurrentWorry = new Worry
