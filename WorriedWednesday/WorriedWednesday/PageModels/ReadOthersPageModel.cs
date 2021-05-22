@@ -155,20 +155,9 @@ namespace WorriedWednesday.PageModels
     public override async Task InitializeAsync(object navigationData)
     {
 
-      // ~~~~~~~~~~~~~~ getUserAsync always fails here first after log in.
-      // ~~~~~~~~~~~~~~ Android's FirebaseFirestore.Instance within GetUserAsync (Defined in Android's AccountService) always gets an error
       var user = await _accountService.GetUserAsync();
-
-      //if (user != null)
-      //{
-      //}
-
-      //}
-      var user = await _accountService.GetUserAsync();
-      Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          3");
       if (user != null)
       {
-        Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         4");
       }
       
       // get all worries in Worry Database
@@ -179,8 +168,6 @@ namespace WorriedWednesday.PageModels
 
       // remove worries that currently logged user has already responded to
       _othersWorries.RemoveAll(worry => worry.Replies.FindIndex(reply => reply.AuthorId == user.Id) != -1);
-
-      Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
 
       // if there are no worries to be displayed, disable all navigation buttons and display "no worries" message
       if(!_othersWorries.Any())

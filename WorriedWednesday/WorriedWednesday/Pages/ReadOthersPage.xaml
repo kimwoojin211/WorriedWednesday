@@ -16,10 +16,10 @@
                                 VerticalOptions="End" />
                              
     </StackLayout>
-    <!--<Label Text="{Binding UserId, StringFormat='Hello {0}!'}"
+    <!-- <Label Text="{Binding UserId, StringFormat='Hello {0}!'}"
            HorizontalOptions="FillAndExpand"
            VerticalOptions="End"/>
-    <StackLayout  BindingContext="{Binding CurrentWorry}">-->
+    <StackLayout  BindingContext="{Binding CurrentWorry}"> -->
     <Frame VerticalOptions="FillAndExpand"
            CornerRadius="10"
            Margin="50,100,50,100">

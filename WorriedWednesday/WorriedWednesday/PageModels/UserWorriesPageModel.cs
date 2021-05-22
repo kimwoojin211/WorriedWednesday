@@ -26,6 +26,7 @@ namespace WorriedWednesday.PageModels
     INavigationService _navigationService;
     IAccountService _accountService;
     IAllWorriesService _allWorriesService;
+    ICommand _itemTappedCommand;
     public UserWorriesPageModel(INavigationService navigationService, 
                                 IAccountService accountService)
     {
