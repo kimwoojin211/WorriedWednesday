@@ -29,7 +29,7 @@ namespace WorriedWednesday.Services.AllWorries
     }
     public Task<List<Worry>> GetWorriesAsync()
     {
-      return Task.FromResult(Worries);
+      return Task.FromResult(new List<Worry>(Worries));
     }
   }
 }
