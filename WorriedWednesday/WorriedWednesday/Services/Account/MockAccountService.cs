@@ -8,42 +8,37 @@ namespace WorriedWednesday.Services.Account
 {
   public class MockAccountService : IAccountService
   {
-    List<AuthenticatedUser> users = new List<AuthenticatedUser>();
-    AuthenticatedUser user;
+    List<TestUser> userDB = new List<TestUser>();
+
+    AuthenticatedUser authUser;
     int _index;
 
+
+    // any non-blank entry will succesfully log in, but program will remember the entered email as the current logged in user's Id
     public Task<bool> LoginAsync(string email, string password)
     {
-      if(string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+      int index = userDB.FindIndex(user => user.Email == email && user.Password == password);
+      if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || index == -1)
       {
         return Task.FromResult(false);
       }
 
-      int index = users.FindIndex(user => user.Id == email);
-      if (index != -1)
-      {
-        user = users[index];
-        _index = index;
-      }
-      else
-      {
-        _index = users.Count;
-        user = new AuthenticatedUser();
-        user.Id = email;
-        user.Worries = new List<Worry>();
-        users.Add(user);
-      }
+      authUser = TestToAuth(userDB[index]);
+      _index = index;
       return Task.Delay(500).ContinueWith((Task) => true);
     }
 
-    public Task<bool> RegisterAsync(string username, string email, string password)
+    public Task<bool> RegisterAsync(string name, string email, string password)
     {
-      if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+
+      if (userDB.FindIndex(user => user.Email == email) != -1)
       {
         return Task.FromResult(false);
       }
+      _index = userDB.Count;
       TestUser newUser = new TestUser(userDB.Count.ToString(), name, email, password);
       userDB.Add(newUser);
+
       authUser = TestToAuth(newUser);
       return Task.Delay(500).ContinueWith((Task) => true);
     }
@@ -55,28 +50,28 @@ namespace WorriedWednesday.Services.Account
 
     public Task<AuthenticatedUser> GetUserAsync()
     {
-      return Task.FromResult(user);
+      return Task.FromResult(authUser);
     }
 
     public Task<bool> AddWorryAsync(Worry worry)
     {
       //user.Worries.Insert(0,worry);
-      users[_index].Worries.Add(worry);
-      user = users[_index];
+      userDB[_index].Worries.Add(worry);
+      authUser = TestToAuth(userDB[_index]);
       return Task.FromResult(true);
     }
 
     public Task<bool> AddReplyAsync(Worry worry, Reply reply)
     {
-      int userIndex = users.FindIndex(match => match.Id == worry.AuthorId);
-      int index = users[userIndex].Worries.FindIndex(matchWorry => matchWorry.Equals(worry)); // omega hack (users[0])
+      int userIndex = userDB.FindIndex(match => match.Id == worry.AuthorId);
+      int index = userDB[userIndex].Worries.FindIndex(matchWorry => matchWorry.Equals(worry));
 
       if (index == -1)
       {
         return Task.FromResult(false);
       }
 
-      users[userIndex].Worries[index].Replies.Add(reply);
+      userDB[userIndex].Worries[index].Replies.Add(reply);
       return Task.FromResult(true);
     }
     //public Task<bool> LogWorryAsync(Worry worry)
@@ -84,5 +79,14 @@ namespace WorriedWednesday.Services.Account
     //  Worries.Insert(0, worry);
     //  return Task.FromResult(true);
     //}
+
+    private AuthenticatedUser TestToAuth(TestUser TestUser)
+    {
+      AuthenticatedUser authUser = new AuthenticatedUser();
+      authUser.Id = TestUser.Id;
+      authUser.Name = TestUser.Name;
+      authUser.Worries = TestUser.Worries;
+      return authUser;
+    }
   }
 }

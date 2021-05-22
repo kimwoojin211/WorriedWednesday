@@ -7,7 +7,7 @@
              xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons"
              NavigationPage.HasNavigationBar="False">
 
-  <StackLayout>
+  <StackLayout BackgroundColor="#f4e1ec">
     
     <StackLayout BackgroundColor="{StaticResource Primary}">
       <buttons:BindableButton BindingContext="{Binding WriteWorryButtonModel}"
@@ -20,14 +20,17 @@
            HorizontalOptions="FillAndExpand"
            VerticalOptions="End"/>
     <StackLayout  BindingContext="{Binding CurrentWorry}">-->
-    <Label BindingContext="{Binding CurrentWorry}"
-             Text="{Binding Message}"
-             VerticalOptions="FillAndExpand"
-             HorizontalOptions="FillAndExpand"
-             Padding="50,100,50,100" />
-    
+    <Frame VerticalOptions="FillAndExpand"
+           CornerRadius="10"
+           Margin="50,100,50,100">
+      <Label BindingContext="{Binding CurrentWorry}"
+               Text="{Binding Message}"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"
+               Padding="5,10,5,10" />
+    </Frame>
     <buttons:BindableButton BindingContext="{Binding ReplyButtonModel}"
-                                  WidthRequest="125"/>
+                                  WidthRequest="100"/>
     
     <StackLayout BackgroundColor="{StaticResource Primary}"
 >

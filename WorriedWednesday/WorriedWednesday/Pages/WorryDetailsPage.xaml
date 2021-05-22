@@ -3,17 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WorriedWednesday.Pages.WorryDetailsPage">
 
-  <StackLayout>
-    <StackLayout>
-      <Label Text="{Binding SelectedWorry.Message}"/>
-      <Label Text="{Binding SelectedWorry.Timestamp}"/>
-    </StackLayout>
+  <StackLayout BackgroundColor="#f4e1ec">
+    <Frame VerticalOptions="Fill"
+           CornerRadius="10"
+           Margin="50,10,50,40">
+      <StackLayout BackgroundColor="#fffcd6">
+        <Label Text="{Binding SelectedWorry.Message}"/>
+        <Label Text="{Binding SelectedWorry.Timestamp}"/>
+      </StackLayout>
+    </Frame>
+    
     <ListView ItemsSource="{Binding Replies}">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout>
-              <Label Text="{Binding Message}"/>
+            <StackLayout Margin="30,0,30,20"
+                         BackgroundColor="#B4C4DE">
+              <Label Margin="10,10,10,10"
+                     Text="{Binding Message}"/>
             </StackLayout>
           </ViewCell>
         </DataTemplate>

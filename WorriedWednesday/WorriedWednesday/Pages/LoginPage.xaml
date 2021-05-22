@@ -12,8 +12,13 @@
     </ResourceDictionary>
   </ContentPage.Resources>-->
 
-  <Grid Margin="16,0">
+  <Grid BackgroundColor="#f4e1ec">
+    <Label Text="Worried Wednesday"
+           HorizontalOptions="CenterAndExpand"
+           Padding="0,150,0,0"
+           FontSize="40"/>
     <StackLayout x:Name="loginStackLayout" 
+                 Margin="16,0"
              VerticalOptions="Center"
              IsVisible="True">
       <Entry Placeholder="Email"
@@ -44,6 +49,7 @@
 
     <StackLayout x:Name="registerStackLayout"
              VerticalOptions="Center"
+             Margin="16,0"
              IsVisible="False">
       <Entry Placeholder="Display Name"
            Text="{Binding Name, Mode=TwoWay}"/>
@@ -72,6 +78,7 @@
     <!--forgotpassword stack. need to figure out way to toggle back to login form once button is clicked-->
     <StackLayout x:Name="ForgotPasswordStackLayout"
              VerticalOptions="Center"
+             Margin="16,0"
              IsVisible="false">
       <Label Text="Enter the e-mail address associated with your account"/>
       <Label Text="If the entered e-mail is registered, you will receive an e-mail shortly with instructions on resetting your password."/>

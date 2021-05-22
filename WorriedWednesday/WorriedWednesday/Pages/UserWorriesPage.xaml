@@ -11,12 +11,14 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <StackLayout>
+  <StackLayout BackgroundColor="#f4e1ec">
     <buttons:BindableButton BindingContext="{Binding WriteWorryButtonModel}"
                               HorizontalOptions="Center"
                               WidthRequest="150"
                               VerticalOptions="End"/>
-    <ListView ItemsSource="{Binding Worries}">
+    
+    <ListView ItemsSource="{Binding Worries}"
+              HasUnevenRows="True">
 
       <ListView.Behaviors>
         <xct:EventToCommandBehavior EventName="ItemTapped"
@@ -27,9 +29,20 @@
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout>
-              <Label Text="{Binding Message}"/>
-              <Label Text="{Binding Timestamp}"/>
+            <StackLayout Padding="10,10,10,10"
+                         MinimumHeightRequest="100">
+              <Frame>
+                <StackLayout Background="white" Orientation="Horizontal"
+                           MinimumHeightRequest="70">
+                  <StackLayout MinimumWidthRequest="100"
+                               VerticalOptions="Center"
+                               Margin=" -5,0,20,0">
+                    <Label Text="{Binding Timestamp, StringFormat='{0:MMM dd}'}"
+                    FontSize="20"/> 
+                  </StackLayout>
+                  <Label Text="{Binding Message}"/>
+                </StackLayout>
+              </Frame>
             </StackLayout>
           </ViewCell>
         </DataTemplate>
