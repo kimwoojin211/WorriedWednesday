@@ -5,6 +5,9 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Firebase;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace WorriedWednesday.Droid
 {
@@ -18,6 +21,7 @@ namespace WorriedWednesday.Droid
       Xamarin.Essentials.Platform.Init(this, savedInstanceState);
       global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
       FirebaseApp.InitializeApp(Application.Context);
+      //AppCenter.Start("330f9440-d9fd-4016-a6f0-424493225c26", typeof(Analytics), typeof(Crashes));
       LoadApplication(new App());
 
     }

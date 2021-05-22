@@ -16,6 +16,7 @@ namespace WorriedWednesday
   {
     Worry _worry;
     string _message, _id;
+    bool _isReply;
     ButtonModel _submitButtonModel;
     INavigationService _navigationService;
     IAllWorriesService _allWorriesService;
@@ -27,7 +28,7 @@ namespace WorriedWednesday
       _accountService = accountService;
       _allWorriesService = allWorriesService;
       _navigationService = navigationService;
-      SubmitButtonModel = new ButtonModel("Submit", SubmitAction);
+      SubmitButtonModel = new ButtonModel("Submit", VerifySubmissionAction);
     }
 
 
@@ -43,20 +44,43 @@ namespace WorriedWednesday
       set => SetProperty(ref _worry, value);
     }
 
+    public string Id
+    {
+      get => _id;
+      set => SetProperty(ref _id, value);
+    }
     public ButtonModel SubmitButtonModel
     {
       get => _submitButtonModel;
       set => SetProperty(ref _submitButtonModel, value);
     }
 
-    private async void SubmitAction()
+    public bool IsReply
+    {
+      get => _isReply;
+      set => SetProperty(ref _isReply, value);
+    }
+
+    async void VerifySubmissionAction()
+    {
+      string warningMessage = Worry != null ?
+        "Once you submit a reply, you will no longer be able to read this worry or edit/delete your reply." : 
+        "Once you submit a worry, you will not be able to edit or delete it from the public space.";
+      bool answer = await App.Current.MainPage.DisplayAlert("Warning!", warningMessage + " Would you like to continue?", "Yes", "No");
+      if (answer)
+      {
+        SubmitAction();
+      }
+    }
+
+    async void SubmitAction()
     {
       if (Worry != null)
       {
         var item = new Reply
         {
           Message = Message,
-          AuthorId = _id
+          AuthorId = Id
         };
         await _accountService.AddReplyAsync(Worry, item);
       }
@@ -67,10 +91,10 @@ namespace WorriedWednesday
           Message = Message,
           Timestamp = DateTime.Now,
           Replies = new List<Reply>(),
-          AuthorId = _id
+          AuthorId = Id
         };
-        await _allWorriesService.LogWorryAsync(item);
         await _accountService.AddWorryAsync(item);
+        await _allWorriesService.LogWorryAsync(item);
       }
 
       await _navigationService.NavigateToAsync<DashboardPageModel>();
@@ -81,11 +105,16 @@ namespace WorriedWednesday
       var user = await _accountService.GetUserAsync();
       if(user != null)
       {
-        _id = user.Id;
+        Id = user.Id;
       }
       if(navigationData is Worry worry)
       {
         Worry = worry;
+        IsReply = true;
+      }
+      else
+      {
+        IsReply = false;
       }
       await base.InitializeAsync(navigationData);
     }

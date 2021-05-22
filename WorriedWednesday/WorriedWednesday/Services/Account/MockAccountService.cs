@@ -31,12 +31,15 @@ namespace WorriedWednesday.Services.Account
     public Task<bool> RegisterAsync(string name, string email, string password)
     {
 
-      if(userDB.FindIndex(user => user.Email == email) != -1)
+      if (userDB.FindIndex(user => user.Email == email) != -1)
       {
         return Task.FromResult(false);
       }
+      _index = userDB.Count;
       TestUser newUser = new TestUser(userDB.Count.ToString(), name, email, password);
       userDB.Add(newUser);
+
+      authUser = TestToAuth(newUser);
       return Task.Delay(500).ContinueWith((Task) => true);
     }
 
@@ -61,7 +64,7 @@ namespace WorriedWednesday.Services.Account
     public Task<bool> AddReplyAsync(Worry worry, Reply reply)
     {
       int userIndex = userDB.FindIndex(match => match.Id == worry.AuthorId);
-      int index = userDB[userIndex].Worries.FindIndex(matchWorry => matchWorry.Equals(worry)); 
+      int index = userDB[userIndex].Worries.FindIndex(matchWorry => matchWorry.Equals(worry));
 
       if (index == -1)
       {

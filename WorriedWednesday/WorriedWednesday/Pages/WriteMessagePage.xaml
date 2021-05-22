@@ -4,23 +4,35 @@
              x:Class="WorriedWednesday.Pages.WriteMessagePage"
              xmlns:buttons="clr-namespace:WorriedWednesday.Views.Buttons"
              >
-  <StackLayout>
-    <StackLayout IsVisible="false">
-      <Label Text="Worry"/>
-      <Label Text="{Binding Worry.Message}"/>
-    </StackLayout>
+  <StackLayout BackgroundColor="#f4e1ec">
+    <Frame VerticalOptions="Fill"
+           CornerRadius="10"
+           Margin="50,10,50,40"
+           IsVisible="{Binding IsReply}">
+      <StackLayout 
+                 Margin=" 10,10,10,120">
+        <Label Text="Worry"/>
+        <Label Text="{Binding Worry.Message}"/>
+      </StackLayout>
+    </Frame>
 
-    <StackLayout
-             HorizontalOptions="FillAndExpand"
-             VerticalOptions="Center">
-      <Label Text="Message"/>
-      <Entry Text="{Binding Message, Mode=TwoWay}"
-             HorizontalOptions="FillAndExpand"
-             VerticalOptions="Center"/>
-      <buttons:BindableButton BindingContext="{Binding SubmitButtonModel}"
-                              HorizontalOptions="Center"
-                              WidthRequest="150"
-                              VerticalOptions="End"/>
-    </StackLayout>
+    <Frame VerticalOptions="Fill"
+           CornerRadius="10"
+           Margin="40,10,40,40">
+      <StackLayout
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"
+               Margin="10,10,10,10">
+        <Label Text="Message"/>
+        <Editor Text="{Binding Message, Mode=TwoWay}"
+               AutoSize="TextChanges"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"/>
+        <buttons:BindableButton BindingContext="{Binding SubmitButtonModel}"
+                                HorizontalOptions="Center"
+                                WidthRequest="150"
+                                VerticalOptions="End"/>
+      </StackLayout>
+  </Frame>
   </StackLayout>
 </ContentPage>

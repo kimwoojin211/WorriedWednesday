@@ -163,14 +163,27 @@ namespace WorriedWednesday.PageModels
       //{
       //}
 
-      _othersWorries = await _allWorriesService.GetWorriesAsync(); // requests list of all worries from worry database
-      _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id); // omits from view all worries that belong to the current logged in user
-      //stretch goal: also omit worries that current user has replied to.
-      //stretch goal: include a bool flag in case people do not want to see a particular worry
+      //}
+      var user = await _accountService.GetUserAsync();
+      Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          3");
+      if (user != null)
+      {
+        Console.WriteLine("                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         4");
+      }
+      
+      // get all worries in Worry Database
+      _othersWorries = await _allWorriesService.GetWorriesAsync();
+      
+      // remove worries that belong to currently logged user
+      _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id);
 
+      // remove worries that currently logged user has already responded to
+      _othersWorries.RemoveAll(worry => worry.Replies.FindIndex(reply => reply.AuthorId == user.Id) != -1);
 
+      Console.WriteLine(_othersWorries.Any() + "                                   siiiiiiiiiiick~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          2");
 
-      if(!_othersWorries.Any()) // if there's no worries left for current user to view
+      // if there are no worries to be displayed, disable all navigation buttons and display "no worries" message
+      if(!_othersWorries.Any())
       {
         CurrentWorry = new Worry
         {

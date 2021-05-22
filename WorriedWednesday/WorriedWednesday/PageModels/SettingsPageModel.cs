@@ -22,7 +22,7 @@ namespace WorriedWednesday.PageModels
     }
     private async void LogOutAction()
     {
-      await _navigationService.NavigateToAsync<LoginPageModel>();
+      await _navigationService.NavigateToAsync<LoginPageModel>(null,true);
     }
   }
 }

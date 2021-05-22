@@ -7,7 +7,8 @@
             android:TabbedPage.ToolbarPlacement="Bottom">
   
   <TabbedPage.Children>
-    <NavigationPage Title="Others' Worries">
+    <NavigationPage Title="Others' Worries"
+                    >
       <x:Arguments>
         <pages:ReadOthersPage BindingContext="{Binding ReadOthersPageModel}" />
       </x:Arguments>
