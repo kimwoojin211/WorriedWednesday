@@ -44,6 +44,11 @@ namespace WorriedWednesday
       set => SetProperty(ref _worry, value);
     }
 
+    public string Id
+    {
+      get => _id;
+      set => SetProperty(ref _id, value);
+    }
     public ButtonModel SubmitButtonModel
     {
       get => _submitButtonModel;
@@ -75,7 +80,7 @@ namespace WorriedWednesday
         var item = new Reply
         {
           Message = Message,
-          AuthorId = _id
+          AuthorId = Id
         };
         await _accountService.AddReplyAsync(Worry, item);
       }
@@ -86,10 +91,10 @@ namespace WorriedWednesday
           Message = Message,
           Timestamp = DateTime.Now,
           Replies = new List<Reply>(),
-          AuthorId = _id
+          AuthorId = Id
         };
-        await _allWorriesService.LogWorryAsync(item);
         await _accountService.AddWorryAsync(item);
+        await _allWorriesService.LogWorryAsync(item);
       }
 
       await _navigationService.NavigateToAsync<DashboardPageModel>();
@@ -100,7 +105,7 @@ namespace WorriedWednesday
       var user = await _accountService.GetUserAsync();
       if(user != null)
       {
-        _id = user.Id;
+        Id = user.Id;
       }
       if(navigationData is Worry worry)
       {

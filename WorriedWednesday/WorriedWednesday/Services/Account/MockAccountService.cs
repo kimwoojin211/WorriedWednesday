@@ -42,6 +42,9 @@ namespace WorriedWednesday.Services.Account
       {
         return Task.FromResult(false);
       }
+      TestUser newUser = new TestUser(userDB.Count.ToString(), name, email, password);
+      userDB.Add(newUser);
+      authUser = TestToAuth(newUser);
       return Task.Delay(500).ContinueWith((Task) => true);
     }
 
