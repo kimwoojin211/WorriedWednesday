@@ -4,9 +4,6 @@ using System.Linq;
 using Xamarin.Forms;
 using Foundation;
 using UIKit;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 
 namespace WorriedWednesday.iOS
 {
@@ -27,10 +24,6 @@ namespace WorriedWednesday.iOS
     {
       global::Xamarin.Forms.Forms.Init();
       LoadApplication(new App());
-      //AppCenter.Start("6cd00531 - 72ca - 4eba - 9b49 - a6629366bf76", typeof(Analytics), typeof(Crashes));
-      #if ENABLE_TEST_CLOUD
-      Xamarin.Calabash.Start();
-      #endif
       Firebase.Core.App.Configure();
       return base.FinishedLaunching(app, options);
     }

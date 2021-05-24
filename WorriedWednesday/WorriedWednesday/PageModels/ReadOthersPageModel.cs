@@ -13,7 +13,7 @@ namespace WorriedWednesday.PageModels
 {
   public class ReadOthersPageModel : PageModelBase
   {
-    string _userId, _name, _message;
+    string _name, _message;
     ButtonModel _replyButtonModel,
               _writeWorryButtonModel,
               _nextWorryButtonModel,
@@ -47,13 +47,6 @@ namespace WorriedWednesday.PageModels
       get => _message;
       set => SetProperty(ref _message, value);
     }
-
-    //public string UserId
-    //{
-    //  get => _userId;
-    //  set => SetProperty(ref _userId, value);
-    //}
-
 
     public string Name
     {
@@ -98,6 +91,7 @@ namespace WorriedWednesday.PageModels
       get => _nextWorryButtonModel;
       set => SetProperty(ref _nextWorryButtonModel, value);
     }
+
     public ButtonModel RandomWorryButtonModel
     {
       get => _randomWorryButtonModel;
@@ -159,17 +153,11 @@ namespace WorriedWednesday.PageModels
       if (user != null)
       {
       }
-      
-      // get all worries in Worry Database
-      _othersWorries = await _allWorriesService.GetWorriesAsync();
-      
-      // remove worries that belong to currently logged user
-      _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id);
 
-      // remove worries that currently logged user has already responded to
+      _othersWorries = await _allWorriesService.GetWorriesAsync();
+      _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id);
       _othersWorries.RemoveAll(worry => worry.Replies.FindIndex(reply => reply.AuthorId == user.Id) != -1);
 
-      // if there are no worries to be displayed, disable all navigation buttons and display "no worries" message
       if(!_othersWorries.Any())
       {
         CurrentWorry = new Worry
@@ -177,7 +165,6 @@ namespace WorriedWednesday.PageModels
           Message = "No new Worries!"
         };
 
-        //disable all buttons on page (except to write a new message)
         PrevWorryButtonModel.IsEnabled = false;
         NextWorryButtonModel.IsEnabled = false;
         RandomWorryButtonModel.IsEnabled = false;
@@ -185,10 +172,9 @@ namespace WorriedWednesday.PageModels
       }
       else
       {
-        CurrentWorry = _othersWorries[0]; // initializes to most recently added worry
-        ReplyButtonModel.IsEnabled = true;  // enable reply button to allow current user to reply to current worry
+        CurrentWorry = _othersWorries[0]; 
+        ReplyButtonModel.IsEnabled = true;  
 
-        // only 1 worry available, so worry navigation still disabled
         if (_othersWorries.Count == 1)
         {
           PrevWorryButtonModel.IsEnabled = false;

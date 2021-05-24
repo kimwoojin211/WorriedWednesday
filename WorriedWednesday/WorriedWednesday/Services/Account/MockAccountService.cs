@@ -9,12 +9,9 @@ namespace WorriedWednesday.Services.Account
   public class MockAccountService : IAccountService
   {
     List<TestUser> userDB = new List<TestUser>();
-
     AuthenticatedUser authUser;
     int _index;
 
-
-    // any non-blank entry will succesfully log in, but program will remember the entered email as the current logged in user's Id
     public Task<bool> LoginAsync(string email, string password)
     {
       int index = userDB.FindIndex(user => user.Email == email && user.Password == password);
@@ -55,7 +52,6 @@ namespace WorriedWednesday.Services.Account
 
     public Task<bool> AddWorryAsync(Worry worry)
     {
-      //user.Worries.Insert(0,worry);
       userDB[_index].Worries.Add(worry);
       authUser = TestToAuth(userDB[_index]);
       return Task.FromResult(true);
@@ -74,11 +70,6 @@ namespace WorriedWednesday.Services.Account
       userDB[userIndex].Worries[index].Replies.Add(reply);
       return Task.FromResult(true);
     }
-    //public Task<bool> LogWorryAsync(Worry worry)
-    //{
-    //  Worries.Insert(0, worry);
-    //  return Task.FromResult(true);
-    //}
 
     private AuthenticatedUser TestToAuth(TestUser TestUser)
     {

@@ -2,19 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Login"
+             NavigationPage.HasNavigationBar="False"
              x:Class="WorriedWednesday.Pages.LoginPage">
   
-  <!--<ContentPage.Resources>
-    <ResourceDictionary>
-      <vm:LoginPageModel x:Key="vm"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>-->
-
   <Grid BackgroundColor="#f4e1ec">
     <Label Text="Worried Wednesday"
            HorizontalOptions="CenterAndExpand"
-           Padding="0,150,0,0"
-           FontSize="40"/>
+           Padding="0,170,0,0"
+           FontSize="50"
+           FontFamily="DancingScript"
+           TextColor="LightSeaGreen"/>
     <StackLayout x:Name="loginStackLayout" 
                  Margin="16,0"
              VerticalOptions="Center"
@@ -45,7 +42,6 @@
       </StackLayout>
     </StackLayout>
 
-    <!--register stack. need to figure out way to toggle back to login form once send email button is clicked-->
     <StackLayout x:Name="registerStackLayout"
              VerticalOptions="Center"
              Margin="16,0"
@@ -74,7 +70,6 @@
     </StackLayout>
 
     
-    <!--forgotpassword stack. need to figure out way to toggle back to login form once send email button is clicked-->
     <StackLayout x:Name="ForgotPasswordStackLayout"
              VerticalOptions="Center"
              Margin="16,0"

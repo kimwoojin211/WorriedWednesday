@@ -5,9 +5,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Firebase;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
+
 
 namespace WorriedWednesday.Droid
 {

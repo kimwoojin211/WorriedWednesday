@@ -58,14 +58,12 @@ namespace WorriedWednesday.iOS.Services
         {
           if (error != null)
           {
-            // something went wrong
             tcs.TrySetResult(default(AuthenticatedUser));
             return;
           }
           tcs.TrySetResult(new AuthenticatedUser
           {
             Id = snapshot.Id
-            //Worries = ????
           });
         });
       return tcs.Task;

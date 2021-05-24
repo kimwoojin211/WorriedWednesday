@@ -7,13 +7,11 @@ namespace WorriedWednesday.PageModels.Base
     string _title;
     bool _isLoading;
 
-    //title of page 
     public string Title
     {
       get => _title;
       set => SetProperty(ref _title, value);
     }
-
 
     public bool IsLoading
     {
@@ -21,25 +19,10 @@ namespace WorriedWednesday.PageModels.Base
       set => SetProperty(ref _isLoading, value);
     }
 
-
     public virtual Task InitializeAsync(object navigationData = null)
     {
       return Task.CompletedTask;
     }
-
-    //moved to extended bindable object
-
-    //protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName]string propertyName = null)
-    //{
-    //  if (EqualityComparer<T>.Default.Equals(storage, value))
-    //  {
-    //    return false;
-    //  }
-
-    //  storage = value;
-    //  OnPropertyChanged(propertyName);
-    //  return true;
-    //}
 
   }
 }

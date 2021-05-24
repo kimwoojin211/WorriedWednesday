@@ -19,9 +19,6 @@ namespace WorriedWednesday.Droid.Services
     {
     }
 
-    // to test with active firebase auth database, use
-    // email = test@test.com
-    // password = 123456
     public Task<bool> LoginAsync(string email, string password)
     {
       var tcs = new TaskCompletionSource<bool>();

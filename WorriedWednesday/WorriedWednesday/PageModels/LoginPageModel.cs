@@ -4,15 +4,12 @@ using WorriedWednesday.Services.Account;
 using WorriedWednesday.Services.Navigation;
 using Xamarin.Forms;
 
-// to test with active firebase auth database, use
-// email = test@test.com
-// password = 123456
-
 namespace WorriedWednesday.PageModels
 {
   public class LoginPageModel : PageModelBase
   {
     //private fields
+
     ICommand _loginCommand, _registerCommand, _passwordResetCommand;
     INavigationService _navigationService;
     IAccountService _accountService;
@@ -83,7 +80,6 @@ namespace WorriedWednesday.PageModels
       }
       else
       {
-        //Display failure alert
         await App.Current.MainPage.DisplayAlert("Error", "Email/Password not found. Please try again", "Ok");
       }
     }
@@ -96,7 +92,6 @@ namespace WorriedWednesday.PageModels
       }
       else if (ConfirmPassword != Password)
       {
-        //Display failure alert
         await App.Current.MainPage.DisplayAlert("Error", "Passwords do not match", "Ok");
       }
       else
@@ -104,7 +99,6 @@ namespace WorriedWednesday.PageModels
         var registerAttempt = await _accountService.RegisterAsync(Name, Email, Password);
         if (registerAttempt)
         {
-          // clears entry fields. otherwise, if someone logs in and logs back out, previously entered fields still there
           Name = string.Empty;
           Email = string.Empty;
           Password = string.Empty;
@@ -127,17 +121,9 @@ namespace WorriedWednesday.PageModels
       }
       else
       {
-        //Display failure alert
         await App.Current.MainPage.DisplayAlert("Error", "Error. Please try again", "Ok");
       }
     }
   }
-
-    // unneeded because of ExtendedBindableObject's SetProperty()
-
-    //void OnPropertyChanged(string propertyName)
-    //{
-    //  PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    //}
 
 }

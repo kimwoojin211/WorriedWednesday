@@ -21,11 +21,9 @@ namespace WorriedWednesday.PageModels
     DateTime _timestamp;
     ObservableCollection<Worry> _worries;
     Worry _selectedWorry;
-    //List<Worry> _worries;
     ButtonModel _writeWorryButtonModel;
     INavigationService _navigationService;
     IAccountService _accountService;
-    IAllWorriesService _allWorriesService;
     ICommand _itemTappedCommand;
     public UserWorriesPageModel(INavigationService navigationService, 
                                 IAccountService accountService)
@@ -52,23 +50,16 @@ namespace WorriedWednesday.PageModels
       set => SetProperty(ref _timestamp, value);
     }
 
-    //populates listview of all user's worries ever submitted
     public ObservableCollection<Worry> Worries
     {
       get => _worries;
       set => SetProperty(ref _worries, value);
     }
 
-    // when user selects a worry from the listview on UserWorriesPage, I want to redirect them to a WorryDetailsPageModel, with SelectedWorry as navigationdata
-    // effectively acting as a details page, where i can also list out all relevant replies
     public Worry SelectedWorry
     {
       get => _selectedWorry;
       set => SetProperty(ref _selectedWorry, value);
-        //if(_selectedWorry != null)
-        //{ 
-        //  Task.Run(() => SelectedAction());
-        //}
     }
 
     public ButtonModel WriteWorryButtonModel
@@ -88,7 +79,6 @@ namespace WorriedWednesday.PageModels
     private async void SelectedAction(object selectedWorry)
     {
       await _navigationService.NavigateToAsync<WorryDetailsPageModel>((Worry) selectedWorry);
-      //Worries.Insert(0, new Worry { Text, Timestamp, Replies, UserId }
     }
 
     private async void WriteAction()
@@ -102,7 +92,6 @@ namespace WorriedWednesday.PageModels
       SelectedWorry = null;
       var user = await _accountService.GetUserAsync();
       Worries = new ObservableCollection<Worry>(user.Worries);
-
       await base.InitializeAsync(navigationData);
     }
   }

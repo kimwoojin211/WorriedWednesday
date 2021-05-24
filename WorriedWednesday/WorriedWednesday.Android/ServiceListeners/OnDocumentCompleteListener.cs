@@ -29,7 +29,6 @@ namespace WorriedWednesday.Droid.ServiceListeners
           return;
         }
       }
-      //something went wrong
       _tcs.TrySetResult(default);
 
     }

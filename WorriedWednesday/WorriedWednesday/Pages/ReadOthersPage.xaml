@@ -8,18 +8,14 @@
              NavigationPage.HasNavigationBar="False">
 
   <StackLayout BackgroundColor="#f4e1ec">
-    
+
     <StackLayout BackgroundColor="{StaticResource Primary}">
       <buttons:BindableButton BindingContext="{Binding WriteWorryButtonModel}"
                                 HorizontalOptions="Center"
                                 WidthRequest="150"
                                 VerticalOptions="End" />
-                             
+
     </StackLayout>
-    <!-- <Label Text="{Binding UserId, StringFormat='Hello {0}!'}"
-           HorizontalOptions="FillAndExpand"
-           VerticalOptions="End"/>
-    <StackLayout  BindingContext="{Binding CurrentWorry}"> -->
     <Frame VerticalOptions="FillAndExpand"
            CornerRadius="10"
            Margin="50,100,50,100">

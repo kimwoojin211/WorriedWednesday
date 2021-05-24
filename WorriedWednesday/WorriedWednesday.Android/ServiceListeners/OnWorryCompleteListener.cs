@@ -21,7 +21,6 @@ namespace WorriedWednesday.Droid.ServiceListeners
 
       if (task.IsSuccessful)
       {
-        // process document
         var result = task.Result;
         if (result is DocumentSnapshot doc)
         {

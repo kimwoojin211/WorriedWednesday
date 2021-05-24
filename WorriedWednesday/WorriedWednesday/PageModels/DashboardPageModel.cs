@@ -9,17 +9,18 @@ namespace WorriedWednesday.PageModels
     UserWorriesPageModel _userWorriesPM;
     SettingsPageModel _settingsPM;
 
-
     public ReadOthersPageModel ReadOthersPageModel
     {
       get => _readOthersPM;
       set => SetProperty(ref _readOthersPM, value);
     }
+
     public UserWorriesPageModel UserWorriesPageModel
     {
       get => _userWorriesPM;
       set => SetProperty(ref _userWorriesPM, value);
     }
+
     public SettingsPageModel SettingsPageModel
     {
       get => _settingsPM;
@@ -34,6 +35,7 @@ namespace WorriedWednesday.PageModels
       UserWorriesPageModel = userWorriesPM;
       SettingsPageModel = settingsPM;
     }
+
     public override Task InitializeAsync(object navigationData)
     {
       return Task.WhenAny(base.InitializeAsync(navigationData),

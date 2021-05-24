@@ -22,7 +22,6 @@ namespace WorriedWednesday.iOS.Services
         {
           if (error != null)
           {
-            //something went wrong
             tcs.TrySetResult(default);
             return;
           }

@@ -49,17 +49,12 @@ namespace WorriedWednesday.PageModels.Base
 
     }
 
-    /// <summary>
-    /// Private utility method to Register page and page model for page retrieval by it's
-    /// specified page model type.
-    /// </summary>
-    /// <typeparam name="TPageModel"></typeparam>
-    /// <typeparam name="TPage"></typeparam>
     static void Register<TPageModel, TPage>() where TPageModel : PageModelBase where TPage : Page
     {
       _viewLookup.Add(typeof(TPageModel), typeof(TPage));
       _container.Register<TPageModel>();
     }
+
     public static T Resolve<T>() where T : class 
     {
       try
@@ -85,8 +80,6 @@ namespace WorriedWednesday.PageModels.Base
       }
       return default(T);
     }
-
-
 
     public static Page CreatePageFor<TPageModelType>() where TPageModelType : PageModelBase
     {

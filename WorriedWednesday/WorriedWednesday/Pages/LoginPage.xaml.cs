@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WorriedWednesday.Services;
 
+[assembly: ExportFont("DancingScript.ttf")]
 namespace WorriedWednesday.Pages
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]

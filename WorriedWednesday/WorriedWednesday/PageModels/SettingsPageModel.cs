@@ -20,6 +20,7 @@ namespace WorriedWednesday.PageModels
       get => _logOutButtonModel;
       set => SetProperty(ref _logOutButtonModel, value);
     }
+
     private async void LogOutAction()
     {
       await _navigationService.NavigateToAsync<LoginPageModel>(null,true);

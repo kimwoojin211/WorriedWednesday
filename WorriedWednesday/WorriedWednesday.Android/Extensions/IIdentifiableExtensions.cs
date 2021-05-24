@@ -8,11 +8,8 @@ namespace WorriedWednesday.Droid.Extensions
   public static class IIdentifiableExtensions
   {
 
-    //public static Dictionary<string, Java.Lang.Object> Convert(this IIdentifiable item)
     public static HashMap Convert(this IIdentifiable item)
     {
-      //var dict = new Dictionary<string, Java.Lang.Object>();
-
       var map = new HashMap();
       var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(item);
       var propertyDict = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonStr);
@@ -36,10 +33,8 @@ namespace WorriedWednesday.Droid.Extensions
 
         if (javaVal != null)
           map.Put(key, javaVal);
-        //dict.Add(key, javaVal);
       }
 
-      //return dict;
       return map;
     }
   }
