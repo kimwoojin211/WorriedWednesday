@@ -60,7 +60,7 @@ For contact support, please email  <a href="mailto:kimwoojin211@gmail.com">Send 
 ## Special Thanks to
 
 * Patrick T and his "Let's Create Series" [Youtube Channel](https://www.youtube.com/channel/UCTPT0XDuOQFv-DzXEfj_nGQ), for his [Xamarin Tutorial Playlist](https://www.youtube.com/watch?v=HgsUzH-7KYw&list=PLehqRG9c-ovaFilQkVvblioONDbnn3VU9)
-* Ziba, Popcannibal's **Kind Words (lo fi chill beats to write to)**, for the heavy inspiration behind the application.
+* Ziba, Popcannibal's [Kind Words (lo fi chill beats to write to)](https://popcannibal.com/kindwords/), for the heavy inspiration behind the application.
 
 ### License
 ```
