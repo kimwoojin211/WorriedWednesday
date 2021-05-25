@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UIKit;
+using WorriedWednesday.iOS.Extensions;
 using WorriedWednesday.Services;
 
 namespace WorriedWednesday.iOS.Services
@@ -25,6 +26,7 @@ namespace WorriedWednesday.iOS.Services
             tcs.TrySetResult(default);
             return;
           }
+          tcs.TrySetResult(snapshot.Convert<T>());
         });
       return tcs.Task;
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WorriedWednesday.Models;
 using WorriedWednesday.PageModels.Base;
+using WorriedWednesday.Services;
 using WorriedWednesday.Services.Account;
 using WorriedWednesday.Services.AllWorries;
 using WorriedWednesday.Services.Navigation;
@@ -149,10 +150,11 @@ namespace WorriedWednesday.PageModels
     public override async Task InitializeAsync(object navigationData)
     {
 
+      //var item = await PageModelLocator.Resolve<IRepository<TestData>>().Get("9PibxRDmDZTNOWIRIUWk");
+      //if (item != null)
+      //{
+      //}
       var user = await _accountService.GetUserAsync();
-      if (user != null)
-      {
-      }
 
       _othersWorries = await _allWorriesService.GetWorriesAsync();
       _othersWorries.RemoveAll(worry => worry.AuthorId == user.Id);

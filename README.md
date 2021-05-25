@@ -6,12 +6,13 @@
 
 ## Proof of Concept
 
+
 <details>
 <div float="center">
-<img src="images/screen1.png" width="45%" height="auto">
-<img src="images/screen2.png" width="45%" height="auto">
-<img src="images/screen3.png" width="45%" height="auto">
-<img src="images/screen4.png" width="45%" height="auto">
+<img src="https://raw.githubusercontent.com/kimwoojin211/WorriedWednesday/main/images/screen1.PNG" width="20%" height="auto">
+<img src="https://raw.githubusercontent.com/kimwoojin211/WorriedWednesday/main/images/screen2.PNG" width="20%" height="auto">
+<img src="https://raw.githubusercontent.com/kimwoojin211/WorriedWednesday/main/images/screen3.PNG" width="20%" height="auto">
+<img src="https://raw.githubusercontent.com/kimwoojin211/WorriedWednesday/main/images/screen4.PNG" width="20%" height="auto">
 </div>
 </details>
 
@@ -23,6 +24,7 @@
 * _C#_
 * _Java(Android)_
 * _Swift(iOS)_
+* _TinyIOC.js_
 
 
 ## Setup/Installation Instructions
@@ -59,7 +61,7 @@ For contact support, please email  <a href="mailto:kimwoojin211@gmail.com">Send 
 ## Special Thanks to
 
 * Patrick T and his "Let's Create Series" [Youtube Channel](https://www.youtube.com/channel/UCTPT0XDuOQFv-DzXEfj_nGQ), for his [Xamarin Tutorial Playlist](https://www.youtube.com/watch?v=HgsUzH-7KYw&list=PLehqRG9c-ovaFilQkVvblioONDbnn3VU9)
-* Ziba, Popcannibal's **Kind Words (lo fi chill beats to write to)**, for the heavy inspiration behind the application.
+* Ziba, Popcannibal's [Kind Words (lo fi chill beats to write to)](https://popcannibal.com/kindwords/), for the heavy inspiration behind the application.
 
 ### License
 ```

@@ -51,6 +51,8 @@ namespace WorriedWednesday.iOS.Services
     {
       var tcs = new TaskCompletionSource<AuthenticatedUser>();
 
+      //// firebasefirestore.sharedinstance keeps breaking :(
+
       Firebase.CloudFirestore.Firestore.SharedInstance
         .GetCollection("users")
         .GetDocument(Auth.DefaultInstance.CurrentUser.Uid)
